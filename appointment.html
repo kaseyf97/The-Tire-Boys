@@ -12,27 +12,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- Primary SEO -->
-  <title>Auto Repair Services | The Tire Boys | Turlock, CA</title>
-  <meta name="description" content="The Tire Boys offers full auto repair services in Turlock, CA — oil changes, tires, brakes, AC, engine diagnostics, and more. Family owned, 20+ years." />
-  <meta name="keywords" content="auto repair services Turlock CA, oil change Turlock, tire shop Turlock, brake repair Turlock" />
+  <title>Book an Appointment | The Tire Boys | Turlock, CA</title>
+  <meta name="description" content="Schedule your auto repair appointment with The Tire Boys in Turlock, CA. Oil changes, tires, brakes, AC, engine diagnostics, and more. Walk-ins also welcome." />
+  <meta name="keywords" content="book appointment auto repair Turlock CA, schedule oil change Turlock, tire appointment Turlock, The Tire Boys appointment" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.thetireboys.com/services.html" />
+  <link rel="canonical" href="https://the-tire-boys.vercel.app/appointment.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Auto Repair Services | The Tire Boys | Turlock, CA" />
-  <meta property="og:description" content="Full-service auto repair in Turlock, CA — oil changes, tires, brakes, AC, engine diagnostics, and more. Family owned, 20+ years of honest service." />
-  <meta property="og:url" content="https://www.thetireboys.com/services.html" />
-  <meta property="og:image" content="https://www.thetireboys.com/og-image.svg" />
+  <meta property="og:title" content="Book an Appointment | The Tire Boys | Turlock, CA" />
+  <meta property="og:description" content="Schedule your auto repair appointment with The Tire Boys in Turlock, CA. Walk-ins also welcome." />
+  <meta property="og:url" content="https://the-tire-boys.vercel.app/appointment.html" />
+  <meta property="og:image" content="https://the-tire-boys.vercel.app/og-image.svg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Auto Repair Services | The Tire Boys | Turlock, CA" />
-  <meta name="twitter:description" content="Full-service auto repair in Turlock, CA — oil changes, tires, brakes, AC, engine diagnostics, and more. Family owned, 20+ years." />
-  <meta name="twitter:image" content="https://www.thetireboys.com/og-image.svg" />
+  <meta name="twitter:title" content="Book an Appointment | The Tire Boys | Turlock, CA" />
+  <meta name="twitter:description" content="Schedule your auto repair appointment with The Tire Boys in Turlock, CA. Walk-ins also welcome." />
+  <meta name="twitter:image" content="https://the-tire-boys.vercel.app/og-image.svg" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -100,10 +100,6 @@
       from { opacity: 0; }
       to   { opacity: 1; }
     }
-    @keyframes slideRight {
-      from { transform: scaleX(0); }
-      to   { transform: scaleX(1); }
-    }
     @keyframes pulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(204,0,0,0.5); }
       50%       { box-shadow: 0 0 0 10px rgba(204,0,0,0); }
@@ -138,13 +134,6 @@
       color: var(--black);
     }
     .section-title.light { color: var(--white); }
-    .section-sub {
-      margin-top: 14px;
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 560px;
-    }
-    .section-sub.light { color: #aaa; }
     .divider {
       width: 52px;
       height: 4px;
@@ -435,138 +424,131 @@
     }
 
     /* ============================================================
-       SERVICES QUICK-NAV
+       APPOINTMENT FORM SECTION
     ============================================================ */
-    .services-quicknav {
-      position: sticky;
-      top: 68px; /* matches header height */
-      z-index: 90;
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-      padding: 12px 20px;
+    .appointment-section {
+      padding: 80px 20px;
+      background: var(--white);
     }
-    .services-quicknav .container {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding-bottom: 2px;
+    .appointment-form-wrap {
+      background: var(--black);
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 44px 40px;
+      max-width: 780px;
+      margin: 0 auto;
     }
-    .services-quicknav .container::-webkit-scrollbar { display: none; }
-    .qnav-pill {
-      display: inline-flex;
-      align-items: center;
-      white-space: nowrap;
-      padding: 7px 16px;
-      border-radius: 100px;
-      border: 1.5px solid var(--border);
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      text-decoration: none;
-      transition: var(--transition);
-      flex-shrink: 0;
-    }
-    .qnav-pill:hover, .qnav-pill.active {
-      background: var(--red);
-      border-color: var(--red);
+    .appointment-form-wrap h3 {
+      font-size: 1.6rem;
       color: var(--white);
+      margin-bottom: 6px;
+    }
+    .appointment-form-wrap p.form-sub {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 28px;
     }
 
-    /* ============================================================
-       SERVICE DETAIL SECTIONS
-    ============================================================ */
-    .service-detail {
-      padding: 70px 20px;
-    }
-    .service-detail:nth-child(even) {
-      background: #f9f9f9;
-    }
-    .service-detail-card {
-      max-width: 860px;
-      margin: 0 auto;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--red);
-      border-radius: var(--radius);
-      padding: 40px 44px;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-    }
-    .service-detail-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-    .service-detail-header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .service-detail-title {
-      font-family: var(--font-body);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--black);
-      margin: 0 0 4px 0;
-    }
-    .service-detail-sub {
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin: 0;
-    }
-    .service-detail-desc {
-      color: var(--text);
-      font-size: 1rem;
-      line-height: 1.75;
-      margin-bottom: 24px;
-    }
-    .service-included-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--red);
-      margin-bottom: 12px;
-    }
-    .service-checklist {
+    /* Form layout (matches index.html contact form) */
+    .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px 24px;
-      margin-bottom: 28px;
-      padding: 0;
-      list-style: none;
+      gap: 18px;
+      margin-bottom: 18px;
     }
-    .service-checklist li {
+    .form-row.three-col {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .form-group {
       display: flex;
-      align-items: center;
-      gap: 9px;
-      font-size: 0.9rem;
-      color: var(--text);
+      flex-direction: column;
+      gap: 6px;
     }
-    .service-checklist li i {
-      color: var(--red);
-      font-size: 0.75rem;
-      flex-shrink: 0;
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-size: 0.97rem;
+      font-family: inherit;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(204,0,0,0.15);
+    }
+    .form-group select option {
+      background: #111;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
     }
 
-    /* Service icon wrap (matches index.html) */
-    .service-icon-wrap {
-      width: 52px; height: 52px;
-      background: rgba(204,0,0,0.08);
-      border-radius: var(--radius);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-      color: var(--red);
-      flex-shrink: 0;
-      transition: background var(--transition);
+    /* Walk-in disclaimer */
+    .disclaimer-box {
+      background: rgba(255, 193, 7, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 24px 0 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
     }
-    .service-detail-card:hover .service-icon-wrap {
-      background: rgba(204,0,0,0.16);
+    .disclaimer-box i {
+      color: #ffc107;
+      font-size: 1.1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .disclaimer-box p {
+      color: #ccc;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .form-submit-btn {
+      width: 100%;
+      margin-top: 8px;
+      padding: 15px;
+      background: var(--red);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background var(--transition), transform 0.15s;
+    }
+    .form-submit-btn:hover { background: #a50000; transform: translateY(-1px); }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 28px;
+      color: #4caf50;
+      font-size: 1.1rem;
+      font-weight: 700;
     }
 
     /* ============================================================
@@ -768,6 +750,7 @@
       .header-phone .phone-label { display: none; }
 
       .page-hero { padding: 70px 20px 60px; }
+      .appointment-section { padding: 60px 20px; }
       .about-cta { padding: 70px 20px; }
 
       .footer-top { grid-template-columns: 1fr 1fr; }
@@ -778,8 +761,9 @@
     }
 
     @media (max-width: 600px) {
-      .service-checklist { grid-template-columns: 1fr; }
-      .service-detail-card { padding: 28px 20px; }
+      .appointment-form-wrap { padding: 28px 18px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-row.three-col { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 500px) {
@@ -812,11 +796,11 @@
 
       <nav class="main-nav" aria-label="Primary navigation">
         <a href="about.html">About</a>
-        <a href="services.html" class="active">Services</a>
+        <a href="services.html">Services</a>
         <a href="index.html#why-us">Why Us</a>
         <a href="index.html#reviews">Reviews</a>
         <a href="index.html#contact">Contact</a>
-        <a href="appointment.html">Book Appointment</a>
+        <a href="appointment.html" class="active">Book Appointment</a>
       </nav>
 
       <div class="header-cta">
@@ -839,11 +823,11 @@
     <div class="mobile-overlay" id="mobile-overlay"></div>
     <nav class="mobile-drawer">
       <a href="about.html"          class="mobile-link">About</a>
-      <a href="services.html"       class="mobile-link active">Services</a>
+      <a href="services.html"       class="mobile-link">Services</a>
       <a href="index.html#why-us"   class="mobile-link">Why Us</a>
       <a href="index.html#reviews"  class="mobile-link">Reviews</a>
       <a href="index.html#contact"  class="mobile-link">Contact &amp; Hours</a>
-      <a href="appointment.html"    class="mobile-link">Book Appointment</a>
+      <a href="appointment.html"    class="mobile-link active">Book Appointment</a>
       <a href="tel:2092502320" class="mobile-call-btn"><i class="fa-solid fa-phone"></i> Call 209-250-2320</a>
     </nav>
   </div>
@@ -851,354 +835,129 @@
   <!-- ============================================================
        PAGE HERO
   ============================================================ -->
-  <section class="page-hero" aria-labelledby="services-heading">
+  <section class="page-hero" aria-labelledby="appointment-heading">
     <div class="page-hero-content">
-      <div class="page-hero-eyebrow">Full-Service Auto Repair</div>
-      <h1 id="services-heading">Our <span>Services</span></h1>
+      <div class="page-hero-eyebrow">Schedule Your Visit</div>
+      <h1 id="appointment-heading">Book an <span>Appointment</span></h1>
       <p class="page-hero-sub">
-        From oil changes to full engine diagnostics — Turlock's trusted family shop has you covered.
+        Fill out the form below and we'll call or text to confirm your appointment time.
+        Walk-ins are always welcome too.
       </p>
     </div>
   </section>
 
   <!-- ============================================================
-       STICKY QUICK-NAV
+       APPOINTMENT FORM
   ============================================================ -->
-  <div class="services-quicknav" aria-label="Jump to service">
-    <div class="container">
-      <a href="#oil-changes" class="qnav-pill">Oil Changes</a>
-      <a href="#tires" class="qnav-pill">Tires</a>
-      <a href="#brakes" class="qnav-pill">Brake Service</a>
-      <a href="#ac-heating" class="qnav-pill">AC &amp; Heating</a>
-      <a href="#engine-diagnostics" class="qnav-pill">Engine Diagnostics</a>
-      <a href="#battery" class="qnav-pill">Battery Service</a>
-      <a href="#transmission" class="qnav-pill">Transmission</a>
-      <a href="#cooling" class="qnav-pill">Cooling System</a>
-      <a href="#suspension" class="qnav-pill">Suspension</a>
-    </div>
-  </div>
+  <section class="appointment-section">
+    <div class="appointment-form-wrap fade-up">
+      <h3>Appointment Request</h3>
+      <p class="form-sub">Tell us about your vehicle and when you'd like to come in.</p>
 
-  <!-- ============================================================
-       1. OIL CHANGES
-  ============================================================ -->
-  <section class="service-detail" id="oil-changes" style="scroll-margin-top: 130px;">
-    <div class="service-detail-card fade-up">
-      <div class="service-detail-header">
-        <div class="service-icon-wrap"><i class="fa-solid fa-oil-can"></i></div>
-        <div>
-          <h2 class="service-detail-title">Oil Changes</h2>
-          <p class="service-detail-sub">Keep Your Engine Running Strong</p>
-        </div>
-      </div>
-      <p class="service-detail-desc">
-        Regular oil changes are the single most important thing you can do for your vehicle's longevity.
-        At The Tire Boys, we use quality oil and filters to keep your engine clean and protected.
-        Whether you drive a daily commuter or a heavy-duty truck, we'll get you in and out fast.
-      </p>
-      <p class="service-included-label">What's Included</p>
-      <ul class="service-checklist">
-        <li><i class="fa-solid fa-circle-check"></i> Conventional Oil Change</li>
-        <li><i class="fa-solid fa-circle-check"></i> Synthetic Oil Change</li>
-        <li><i class="fa-solid fa-circle-check"></i> High-Mileage Formula</li>
-        <li><i class="fa-solid fa-circle-check"></i> Oil Filter Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Multi-Point Inspection</li>
-        <li><i class="fa-solid fa-circle-check"></i> Fluid Level Top-Off</li>
-      </ul>
-      <a href="tel:2092502320" class="btn-primary" style="display:inline-flex;">
-        <i class="fa-solid fa-phone"></i> Call to Schedule
-      </a>
-    </div>
-  </section>
+      <form id="appointment-form">
 
-  <!-- ============================================================
-       2. TIRES
-  ============================================================ -->
-  <section class="service-detail" id="tires" style="scroll-margin-top: 130px;">
-    <div class="service-detail-card fade-up">
-      <div class="service-detail-header">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true">
-            <circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="2"/>
-            <circle cx="12" cy="12" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="12" cy="12" r="2" fill="currentColor"/>
-            <line x1="12" y1="6.5" x2="12" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="12" y1="14" x2="12" y2="17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="6.5" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="14" y1="12" x2="17.5" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+        <!-- Row 1: Name & Phone -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appt-name">Full Name *</label>
+            <input type="text" id="appt-name" name="name" placeholder="John Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="appt-phone">Phone Number *</label>
+            <input type="tel" id="appt-phone" name="phone" placeholder="209-555-0000" required />
+          </div>
         </div>
-        <div>
-          <h2 class="service-detail-title">Tires</h2>
-          <p class="service-detail-sub">Sales, Mounting &amp; Rotation</p>
-        </div>
-      </div>
-      <p class="service-detail-desc">
-        Your tires are the only thing between your vehicle and the road — so we don't cut corners.
-        The Tire Boys carries a wide selection of tires for every vehicle and budget. We'll help you
-        find the right fit, mount and balance them, and keep them in top shape with regular rotations.
-      </p>
-      <p class="service-included-label">What's Included</p>
-      <ul class="service-checklist">
-        <li><i class="fa-solid fa-circle-check"></i> New Tire Sales (All Brands)</li>
-        <li><i class="fa-solid fa-circle-check"></i> Tire Mounting &amp; Balancing</li>
-        <li><i class="fa-solid fa-circle-check"></i> Tire Rotation</li>
-        <li><i class="fa-solid fa-circle-check"></i> Flat Tire Repair</li>
-        <li><i class="fa-solid fa-circle-check"></i> Tire Pressure Check</li>
-        <li><i class="fa-solid fa-circle-check"></i> Tread Depth Inspection</li>
-      </ul>
-      <a href="tel:2092502320" class="btn-primary" style="display:inline-flex;">
-        <i class="fa-solid fa-phone"></i> Call to Schedule
-      </a>
-    </div>
-  </section>
 
-  <!-- ============================================================
-       3. BRAKE SERVICE
-  ============================================================ -->
-  <section class="service-detail" id="brakes" style="scroll-margin-top: 130px;">
-    <div class="service-detail-card fade-up">
-      <div class="service-detail-header">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true">
-            <!-- Rotor disc -->
-            <circle cx="13" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
-            <circle cx="13" cy="12" r="2.5" fill="currentColor"/>
-            <!-- Brake pad body -->
-            <rect x="1.5" y="7.5" width="4.5" height="9" rx="1.2" fill="currentColor"/>
-            <!-- Backing plate -->
-            <rect x="0.5" y="6.5" width="2" height="11" rx="0.8" fill="currentColor"/>
-          </svg>
+        <!-- Row 2: Email -->
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="appt-email">Email Address</label>
+            <input type="email" id="appt-email" name="email" placeholder="you@example.com" />
+          </div>
         </div>
-        <div>
-          <h2 class="service-detail-title">Brake Service</h2>
-          <p class="service-detail-sub">Stop Safely, Every Time</p>
-        </div>
-      </div>
-      <p class="service-detail-desc">
-        Brakes are your vehicle's most critical safety system. If you're hearing squealing, grinding,
-        or your car is pulling to one side, don't wait — bring it in. Our technicians will inspect
-        your entire brake system and give you an honest recommendation with no upsells.
-      </p>
-      <p class="service-included-label">What's Included</p>
-      <ul class="service-checklist">
-        <li><i class="fa-solid fa-circle-check"></i> Brake Pad Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Rotor Resurfacing &amp; Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Brake Fluid Flush</li>
-        <li><i class="fa-solid fa-circle-check"></i> Brake Line Inspection</li>
-        <li><i class="fa-solid fa-circle-check"></i> Caliper Service</li>
-        <li><i class="fa-solid fa-circle-check"></i> Emergency Brake Adjustment</li>
-      </ul>
-      <a href="tel:2092502320" class="btn-primary" style="display:inline-flex;">
-        <i class="fa-solid fa-phone"></i> Call to Schedule
-      </a>
-    </div>
-  </section>
 
-  <!-- ============================================================
-       4. AC & HEATING
-  ============================================================ -->
-  <section class="service-detail" id="ac-heating" style="scroll-margin-top: 130px;">
-    <div class="service-detail-card fade-up">
-      <div class="service-detail-header">
-        <div class="service-icon-wrap"><i class="fa-solid fa-snowflake"></i></div>
-        <div>
-          <h2 class="service-detail-title">AC &amp; Heating</h2>
-          <p class="service-detail-sub">Stay Comfortable Year-Round</p>
+        <!-- Row 3: Vehicle Year / Make / Model -->
+        <div class="form-row three-col">
+          <div class="form-group">
+            <label for="appt-year">Vehicle Year *</label>
+            <select id="appt-year" name="vehicleYear" required>
+              <option value="" disabled selected>Year</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="appt-make">Vehicle Make *</label>
+            <input type="text" id="appt-make" name="vehicleMake" placeholder="e.g. Honda, Toyota" required />
+          </div>
+          <div class="form-group">
+            <label for="appt-model">Vehicle Model *</label>
+            <input type="text" id="appt-model" name="vehicleModel" placeholder="e.g. Civic, Camry" required />
+          </div>
         </div>
-      </div>
-      <p class="service-detail-desc">
-        California summers are no joke — and neither are cold winter mornings. Whether your AC is
-        blowing warm air or your heater isn't keeping up, we'll diagnose and fix it fast. We handle
-        full refrigerant recharges and complex compressor repairs.
-      </p>
-      <p class="service-included-label">What's Included</p>
-      <ul class="service-checklist">
-        <li><i class="fa-solid fa-circle-check"></i> AC Recharge</li>
-        <li><i class="fa-solid fa-circle-check"></i> Refrigerant Leak Detection</li>
-        <li><i class="fa-solid fa-circle-check"></i> Compressor Repair</li>
-        <li><i class="fa-solid fa-circle-check"></i> Heater Core Service</li>
-        <li><i class="fa-solid fa-circle-check"></i> Blower Motor Repair</li>
-        <li><i class="fa-solid fa-circle-check"></i> Climate Control Diagnostics</li>
-      </ul>
-      <a href="tel:2092502320" class="btn-primary" style="display:inline-flex;">
-        <i class="fa-solid fa-phone"></i> Call to Schedule
-      </a>
-    </div>
-  </section>
 
-  <!-- ============================================================
-       5. ENGINE DIAGNOSTICS
-  ============================================================ -->
-  <section class="service-detail" id="engine-diagnostics" style="scroll-margin-top: 130px;">
-    <div class="service-detail-card fade-up">
-      <div class="service-detail-header">
-        <div class="service-icon-wrap"><i class="fa-solid fa-plug"></i></div>
-        <div>
-          <h2 class="service-detail-title">Engine Diagnostics</h2>
-          <p class="service-detail-sub">Find the Problem Fast</p>
+        <!-- Row 4: Service & Date -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appt-service">Service Needed *</label>
+            <select id="appt-service" name="service" required>
+              <option value="" disabled selected>Select a service&hellip;</option>
+              <option value="Oil Change">Oil Change</option>
+              <option value="Tire Service">Tire Service</option>
+              <option value="Brake Repair">Brake Repair</option>
+              <option value="AC / Heating">AC / Heating</option>
+              <option value="Engine Diagnostics">Engine Diagnostics</option>
+              <option value="Battery Service">Battery Service</option>
+              <option value="Transmission">Transmission</option>
+              <option value="Cooling System">Cooling System</option>
+              <option value="Suspension">Suspension</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="appt-date">Preferred Date *</label>
+            <input type="date" id="appt-date" name="preferredDate" required />
+          </div>
         </div>
-      </div>
-      <p class="service-detail-desc">
-        That check engine light can mean a dozen different things. Our diagnostic equipment plugs
-        directly into your vehicle's computer to read fault codes and pinpoint the issue — no
-        guessing, no unnecessary repairs. We'll explain exactly what we find in plain language.
-      </p>
-      <p class="service-included-label">What's Included</p>
-      <ul class="service-checklist">
-        <li><i class="fa-solid fa-circle-check"></i> Check Engine Light Diagnosis</li>
-        <li><i class="fa-solid fa-circle-check"></i> OBD-II Computer Scanning</li>
-        <li><i class="fa-solid fa-circle-check"></i> Misfire Diagnosis</li>
-        <li><i class="fa-solid fa-circle-check"></i> Sensor Testing &amp; Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Emissions Diagnostics</li>
-        <li><i class="fa-solid fa-circle-check"></i> Performance Troubleshooting</li>
-      </ul>
-      <a href="tel:2092502320" class="btn-primary" style="display:inline-flex;">
-        <i class="fa-solid fa-phone"></i> Call to Schedule
-      </a>
-    </div>
-  </section>
 
-  <!-- ============================================================
-       6. BATTERY SERVICE
-  ============================================================ -->
-  <section class="service-detail" id="battery" style="scroll-margin-top: 130px;">
-    <div class="service-detail-card fade-up">
-      <div class="service-detail-header">
-        <div class="service-icon-wrap"><i class="fa-solid fa-battery-full"></i></div>
-        <div>
-          <h2 class="service-detail-title">Battery Service</h2>
-          <p class="service-detail-sub">Don't Get Stranded</p>
+        <!-- Row 5: Time Preference -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appt-time">Preferred Time *</label>
+            <select id="appt-time" name="preferredTime" required>
+              <option value="" disabled selected>Select a time range&hellip;</option>
+              <option value="Morning (7am - 10am)">Morning (7am - 10am)</option>
+              <option value="Midday (10am - 1pm)">Midday (10am - 1pm)</option>
+              <option value="Afternoon (1pm - 4pm)">Afternoon (1pm - 4pm)</option>
+              <option value="Late Afternoon (4pm - 7pm)">Late Afternoon (4pm - 7pm)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <p style="color: var(--muted); font-size: 0.85rem; line-height: 1.55; padding-top: 4px;">
+              We'll confirm your exact time when we call you back.
+            </p>
+          </div>
         </div>
-      </div>
-      <p class="service-detail-desc">
-        A dead battery is never convenient. We'll test your battery and charging system to catch
-        problems before they leave you stranded. If you need a replacement, we carry quality
-        batteries for most makes and models and can install them on the spot.
-      </p>
-      <p class="service-included-label">What's Included</p>
-      <ul class="service-checklist">
-        <li><i class="fa-solid fa-circle-check"></i> Battery Load Testing</li>
-        <li><i class="fa-solid fa-circle-check"></i> Battery Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Alternator Testing</li>
-        <li><i class="fa-solid fa-circle-check"></i> Charging System Inspection</li>
-        <li><i class="fa-solid fa-circle-check"></i> Terminal Cleaning &amp; Treatment</li>
-        <li><i class="fa-solid fa-circle-check"></i> Jump Start Service</li>
-      </ul>
-      <a href="tel:2092502320" class="btn-primary" style="display:inline-flex;">
-        <i class="fa-solid fa-phone"></i> Call to Schedule
-      </a>
-    </div>
-  </section>
 
-  <!-- ============================================================
-       7. TRANSMISSION
-  ============================================================ -->
-  <section class="service-detail" id="transmission" style="scroll-margin-top: 130px;">
-    <div class="service-detail-card fade-up">
-      <div class="service-detail-header">
-        <div class="service-icon-wrap"><i class="fa-solid fa-gears"></i></div>
-        <div>
-          <h2 class="service-detail-title">Transmission</h2>
-          <p class="service-detail-sub">Smooth Shifts, Long Life</p>
+        <!-- Row 6: Issue Description -->
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="appt-issue">Describe the Issue</label>
+            <textarea id="appt-issue" name="issue" placeholder="Tell us what's going on with your vehicle — noises, warning lights, symptoms, etc."></textarea>
+          </div>
         </div>
-      </div>
-      <p class="service-detail-desc">
-        Your transmission is one of the most complex — and expensive — parts of your vehicle.
-        Regular fluid changes and inspections go a long way toward preventing major repairs. We
-        service both automatic and manual transmissions and can diagnose shifting problems quickly.
-      </p>
-      <p class="service-included-label">What's Included</p>
-      <ul class="service-checklist">
-        <li><i class="fa-solid fa-circle-check"></i> Transmission Fluid Flush</li>
-        <li><i class="fa-solid fa-circle-check"></i> Filter Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Automatic Transmission Service</li>
-        <li><i class="fa-solid fa-circle-check"></i> Manual Transmission Service</li>
-        <li><i class="fa-solid fa-circle-check"></i> Transmission Diagnostics</li>
-        <li><i class="fa-solid fa-circle-check"></i> Shift Quality Inspection</li>
-      </ul>
-      <a href="tel:2092502320" class="btn-primary" style="display:inline-flex;">
-        <i class="fa-solid fa-phone"></i> Call to Schedule
-      </a>
-    </div>
-  </section>
 
-  <!-- ============================================================
-       8. COOLING SYSTEM
-  ============================================================ -->
-  <section class="service-detail" id="cooling" style="scroll-margin-top: 130px;">
-    <div class="service-detail-card fade-up">
-      <div class="service-detail-header">
-        <div class="service-icon-wrap"><i class="fa-solid fa-temperature-half"></i></div>
-        <div>
-          <h2 class="service-detail-title">Cooling System</h2>
-          <p class="service-detail-sub">Prevent Overheating Before It Happens</p>
+        <!-- Walk-in Disclaimer -->
+        <div class="disclaimer-box">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <p>
+            <strong>Please note:</strong> Due to high walk-in demand, appointment times are not guaranteed.
+            We'll do our best to accommodate your preferred time and will call or text to confirm your appointment.
+          </p>
         </div>
-      </div>
-      <p class="service-detail-desc">
-        An overheating engine can cause serious — and expensive — damage in minutes. We'll flush
-        your cooling system, inspect hoses and the radiator, and make sure your thermostat and
-        water pump are working properly so you never have to worry about pulling over on the side
-        of the road.
-      </p>
-      <p class="service-included-label">What's Included</p>
-      <ul class="service-checklist">
-        <li><i class="fa-solid fa-circle-check"></i> Coolant Flush &amp; Fill</li>
-        <li><i class="fa-solid fa-circle-check"></i> Radiator Repair &amp; Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Thermostat Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Water Pump Service</li>
-        <li><i class="fa-solid fa-circle-check"></i> Hose Inspection &amp; Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Pressure System Testing</li>
-      </ul>
-      <a href="tel:2092502320" class="btn-primary" style="display:inline-flex;">
-        <i class="fa-solid fa-phone"></i> Call to Schedule
-      </a>
-    </div>
-  </section>
 
-  <!-- ============================================================
-       9. SUSPENSION
-  ============================================================ -->
-  <section class="service-detail" id="suspension" style="scroll-margin-top: 130px;">
-    <div class="service-detail-card fade-up">
-      <div class="service-detail-header">
-        <div class="service-icon-wrap">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true">
-            <!-- Top mount -->
-            <rect x="8" y="1" width="8" height="2.5" rx="1" fill="currentColor"/>
-            <!-- Piston rod -->
-            <rect x="10.5" y="3.5" width="3" height="6" rx="0.8" fill="currentColor"/>
-            <!-- Spring coils -->
-            <path d="M7 9.5 Q9 9.5 9 11 Q9 12.5 12 12.5 Q15 12.5 15 11 Q15 9.5 17 9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            <path d="M7 12.5 Q9 12.5 9 14 Q9 15.5 12 15.5 Q15 15.5 15 14 Q15 12.5 17 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            <!-- Shock body (lower cylinder) -->
-            <rect x="8.5" y="15.5" width="7" height="6" rx="1.5" fill="currentColor"/>
-            <!-- Bottom mount -->
-            <rect x="8" y="20.5" width="8" height="2.5" rx="1" fill="currentColor"/>
-          </svg>
-        </div>
-        <div>
-          <h2 class="service-detail-title">Suspension</h2>
-          <p class="service-detail-sub">Smooth Ride, Safe Handling</p>
-        </div>
-      </div>
-      <p class="service-detail-desc">
-        If your car is bouncing, pulling, or wearing tires unevenly, your suspension may be the
-        culprit. A worn suspension affects both comfort and safety. We inspect the full system —
-        shocks, struts, ball joints, and more — and fix what's needed so your vehicle handles
-        the way it should.
-      </p>
-      <p class="service-included-label">What's Included</p>
-      <ul class="service-checklist">
-        <li><i class="fa-solid fa-circle-check"></i> Shock &amp; Strut Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Ball Joint Service</li>
-        <li><i class="fa-solid fa-circle-check"></i> Tie Rod Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Alignment Check</li>
-        <li><i class="fa-solid fa-circle-check"></i> Spring Replacement</li>
-        <li><i class="fa-solid fa-circle-check"></i> Steering System Inspection</li>
-      </ul>
-      <a href="tel:2092502320" class="btn-primary" style="display:inline-flex;">
-        <i class="fa-solid fa-phone"></i> Call to Schedule
-      </a>
+        <button type="submit" class="form-submit-btn">Request Appointment &rarr;</button>
+        <div class="form-success" id="form-success"><i class="fa-solid fa-circle-check"></i> Appointment request sent! We'll call or text to confirm.</div>
+      </form>
     </div>
   </section>
 
@@ -1207,10 +966,10 @@
   ============================================================ -->
   <section class="about-cta">
     <div class="about-cta-inner fade-up">
-      <h2>Ready to <span>Schedule?</span></h2>
+      <h2>Prefer to <span>Call?</span></h2>
       <p>
-        Call us or stop by — we're at 400 S Golden State Blvd, Turlock.
-        No appointment needed for most services.
+        Skip the form and give us a ring — we're happy to schedule your visit over the phone.
+        Open 7 days a week, 7am to 7pm.
       </p>
       <div class="cta-buttons">
         <a href="tel:2092502320" class="btn-primary">
@@ -1290,6 +1049,9 @@
   <!-- Scroll to top -->
   <button id="scroll-top" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
 
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
   <script>
     'use strict';
 
@@ -1324,9 +1086,6 @@
     const fadeObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const siblings = Array.from(entry.target.parentNode.querySelectorAll('.fade-up'));
-          const idx = siblings.indexOf(entry.target);
-          entry.target.style.transitionDelay = (idx * 80) + 'ms';
           entry.target.classList.add('visible');
           fadeObserver.unobserve(entry.target);
         }
@@ -1343,22 +1102,50 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    /* ------ Quick-Nav Active Pill Tracker ------ */
-    const serviceDetailSections = document.querySelectorAll('.service-detail');
-    const qnavPills = document.querySelectorAll('.qnav-pill');
+    /* ------ Populate Vehicle Year Dropdown ------ */
+    const yearSelect = document.getElementById('appt-year');
+    const currentYear = new Date().getFullYear();
+    // Next year through 2000 (descending)
+    for (let y = currentYear + 1; y >= 2000; y--) {
+      const opt = document.createElement('option');
+      opt.value = y;
+      opt.textContent = y;
+      yearSelect.appendChild(opt);
+    }
 
-    const qnavObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          qnavPills.forEach(pill => {
-            pill.classList.toggle('active', pill.getAttribute('href') === '#' + id);
-          });
-        }
-      });
-    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+    /* ------ Set Minimum Date to Today ------ */
+    const dateInput = document.getElementById('appt-date');
+    dateInput.min = new Date().toISOString().split('T')[0];
 
-    serviceDetailSections.forEach(section => qnavObserver.observe(section));
+    /* ------ Form Submission ------ */
+    const form = document.getElementById('appointment-form');
+    const submitBtn = form.querySelector('.form-submit-btn');
+    const successMsg = document.getElementById('form-success');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      const data = Object.fromEntries(new FormData(form));
+
+      try {
+        const res = await fetch('/api/appointment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (!res.ok) throw new Error('Server error');
+
+        form.reset();
+        submitBtn.style.display = 'none';
+        successMsg.style.display = 'block';
+      } catch (err) {
+        submitBtn.textContent = 'Error — Try Again';
+        submitBtn.disabled = false;
+      }
+    });
   </script>
 
 </body>
