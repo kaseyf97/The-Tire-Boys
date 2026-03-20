@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer tire (rubber) -->
+  <circle cx="50" cy="50" r="50" fill="#222"/>
+  <!-- Tire sidewall -->
+  <circle cx="50" cy="50" r="42" fill="#333"/>
+  <!-- Rim outer edge -->
+  <circle cx="50" cy="50" r="34" fill="#1a1a1a"/>
+  <!-- Spokes (5-spoke wheel) -->
+  <line x1="50" y1="50" x2="50" y2="18"  stroke="#555" stroke-width="7" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="80" y2="34"  stroke="#555" stroke-width="7" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="69" y2="69"  stroke="#555" stroke-width="7" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="31" y2="69"  stroke="#555" stroke-width="7" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="20" y2="34"  stroke="#555" stroke-width="7" stroke-linecap="round"/>
+  <!-- Hub ring -->
+  <circle cx="50" cy="50" r="14" fill="#444"/>
+  <!-- Hub cap (red center) -->
+  <circle cx="50" cy="50" r="10" fill="#CC0000"/>
+  <!-- Hub center bolt -->
+  <circle cx="50" cy="50" r="4" fill="#0D0D0D"/>
+</svg>
