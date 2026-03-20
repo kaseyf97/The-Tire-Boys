@@ -906,24 +906,24 @@
       box-shadow: var(--shadow-lg);
     }
     .team-avatar {
-      width: 80px; height: 80px;
-      background: var(--red);
+      width: 100px; height: 100px;
+      background: #222;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: var(--white);
+      font-size: 1.4rem;
+      color: rgba(204,0,0,0.4);
       margin: 0 auto 18px;
+      overflow: hidden;
+      border: 3px solid rgba(204,0,0,0.2);
+    }
+    .team-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
     }
     .team-card h3 {
       font-size: 1.1rem;
       font-weight: 700;
       color: var(--black);
-      margin-bottom: 4px;
-    }
-    .team-card p {
-      font-size: 0.85rem;
-      color: var(--muted);
     }
     .team-family {
       background: var(--black);
@@ -1170,24 +1170,24 @@
 
     <div class="team-grid">
       <div class="team-card fade-up">
-        <div class="team-avatar">C</div>
+        <!-- Replace the div below with <img src="charles.jpg" alt="Charles"> to add a photo -->
+        <div class="team-avatar"><i class="fa-solid fa-camera"></i></div>
         <h3>Charles</h3>
-        <p>Co-Founder &amp; Lead Technician</p>
       </div>
       <div class="team-card fade-up">
-        <div class="team-avatar">B</div>
+        <!-- Replace the div below with <img src="bobby.jpg" alt="Bobby"> to add a photo -->
+        <div class="team-avatar"><i class="fa-solid fa-camera"></i></div>
         <h3>Bobby</h3>
-        <p>Co-Founder &amp; Operations</p>
       </div>
       <div class="team-card fade-up">
-        <div class="team-avatar">B</div>
+        <!-- Replace the div below with <img src="berry.jpg" alt="Berry"> to add a photo -->
+        <div class="team-avatar"><i class="fa-solid fa-camera"></i></div>
         <h3>Berry</h3>
-        <p>Technician &amp; Family</p>
       </div>
       <div class="team-card fade-up">
-        <div class="team-avatar">K</div>
-        <h3>Kenny</h3>
-        <p>Technician &amp; Family</p>
+        <!-- Replace the div below with <img src="dale.jpg" alt="Dale"> to add a photo -->
+        <div class="team-avatar"><i class="fa-solid fa-camera"></i></div>
+        <h3>Dale</h3>
       </div>
       <div class="team-family fade-up">
         <i class="fa-solid fa-heart"></i>
