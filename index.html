@@ -921,6 +921,17 @@
       margin-bottom: 34px;
       line-height: 1.6;
     }
+    .emergency-cta-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .btn-white-outline {
+      background: transparent;
+      border: 2px solid var(--white);
+      color: var(--white);
+    }
     .btn-white {
       display: inline-flex;
       align-items: center;
@@ -1259,6 +1270,9 @@
       .header-phone .phone-label { display: none; }
       /* Push page content above sticky Book Appointment bar */
       body { padding-bottom: 58px; }
+      /* Stack emergency CTA buttons on mobile */
+      .emergency-cta-btns { flex-direction: column; }
+      .emergency-cta-btns .btn-white { width: 100%; justify-content: center; }
 
       .hero { padding: 80px 20px 70px; }
       .hero-badge { gap: 24px; }
@@ -1810,12 +1824,14 @@
         Don&rsquo;t let a breakdown ruin your day. Call The Tire Boys now &mdash;
         same-day service available for most repairs in Turlock, CA.
       </p>
-      <a href="tel:2092502320" class="btn-white">
-        <i class="fa-solid fa-phone"></i> Call 209-250-2320
-      </a>
-      <a href="appointment.html" class="btn-white" style="background:transparent; border:2px solid var(--white); color:var(--white); margin-left:12px;">
-        <i class="fa-regular fa-calendar"></i> Book Online
-      </a>
+      <div class="emergency-cta-btns">
+        <a href="tel:2092502320" class="btn-white">
+          <i class="fa-solid fa-phone"></i> Call 209-250-2320
+        </a>
+        <a href="appointment.html" class="btn-white btn-white-outline">
+          <i class="fa-regular fa-calendar"></i> Book Online
+        </a>
+      </div>
     </div>
   </section>
 
