@@ -874,6 +874,165 @@
       .btn-primary, .btn-outline { width: 100%; max-width: 320px; justify-content: center; }
       .footer-top { grid-template-columns: 1fr; }
     }
+
+    /* ============================================================
+       MEET THE TEAM
+    ============================================================ */
+    .team {
+      padding: 100px 20px;
+      background: var(--white);
+    }
+    .team-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .team-card {
+      background: var(--light);
+      border-radius: var(--radius);
+      border-top: 3px solid var(--red);
+      padding: 36px 20px;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    .team-avatar {
+      width: 80px; height: 80px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--white);
+      margin: 0 auto 18px;
+    }
+    .team-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .team-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .team-family {
+      background: var(--black);
+      border-top: 3px solid var(--red);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 4px;
+    }
+    .team-family i { color: var(--red); font-size: 1.3rem; }
+    .team-family p { font-size: 0.95rem; color: #aaa; }
+    .team-family p strong { color: var(--white); }
+
+    /* ============================================================
+       PHOTO SLIDESHOW
+    ============================================================ */
+    .slideshow-section {
+      padding: 100px 20px;
+      background: var(--gray);
+    }
+    .slideshow-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .slideshow-outer {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .slideshow-track {
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .slide {
+      min-width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Placeholder — swap with <img src="yourphoto.jpg"> when ready */
+    .slide-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #111;
+      border: 2px dashed rgba(204,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+    .slide-placeholder i { font-size: 3rem; color: rgba(204,0,0,0.3); }
+    .slide-placeholder span {
+      font-size: 0.8rem;
+      color: #444;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .slide img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .slide-btn {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(204,0,0,0.85);
+      color: var(--white);
+      border: none; border-radius: 50%;
+      width: 48px; height: 48px;
+      cursor: pointer; font-size: 1.1rem; z-index: 10;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+    }
+    .slide-btn:hover { background: var(--red); }
+    .slide-prev { left: 14px; }
+    .slide-next { right: 14px; }
+    .slide-dots {
+      display: flex; justify-content: center;
+      gap: 8px; margin-top: 22px;
+    }
+    .slide-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%; background: #444;
+      border: none; cursor: pointer; padding: 0;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .slide-dot.active { background: var(--red); transform: scale(1.35); }
+    .slide-note {
+      text-align: center; margin-top: 18px;
+      font-size: 0.78rem; color: #444;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 768px) {
+      .team { padding: 70px 20px; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .slideshow-section { padding: 70px 20px; }
+    }
+    @media (max-width: 480px) {
+      .team-grid { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -938,11 +1097,11 @@
   ============================================================ -->
   <section class="page-hero" aria-labelledby="about-heading">
     <div class="page-hero-content">
-      <div class="page-hero-eyebrow">Turlock&rsquo;s Trusted Shop</div>
+      <div class="page-hero-eyebrow">Family Owned Since 2002</div>
       <h1 id="about-heading">Meet The <span>Tire</span> Boys</h1>
       <p class="page-hero-sub">
-        A family-run auto repair shop built on honest work, fair prices,
-        and a genuine commitment to the people of Turlock and the Central Valley.
+        A family business rooted in Turlock for 20+ years. Built on treating every
+        customer like one of our own.
       </p>
     </div>
   </section>
@@ -955,16 +1114,17 @@
 
       <div class="story-text fade-up">
         <span class="section-label">Our Story</span>
-        <h2 class="section-title">Built on Trust,<br>Driven by the Community</h2>
+        <h2 class="section-title">A Family Business,<br>Built in Turlock</h2>
         <div class="divider"></div>
         <p>
-          The Tire Boys was founded right here in Turlock with one goal in mind: Treat everyone like family. No upsells, no runaround —
-          just straight answers and quality work done right the first time.
+          The Tire Boys was founded right here in Turlock with one goal in mind: Treat everyone like family.
+          Charles and Bobby opened the first shop together in 2002, passing down what they knew to their
+          kids and nephews — turning a two-man operation into a full family business.
         </p>
         <p>
-          Over 20 years later, we've grown to serve thousands of families, businesses, and fleet
-          vehicles across the Central Valley. From quick oil changes to full engine diagnostics,
-          we handle it all under one roof — 7 days a week, because car trouble doesn't wait for Monday.
+          Over the years, we moved through three locations across Turlock before finding our permanent home
+          at 400 S Golden State Blvd. Through every move, one thing stayed constant: a commitment to honest
+          work and fair prices for every customer who walks through the door.
         </p>
         <p>
           We're not a chain. We're your neighbors. And that makes all the difference.
@@ -985,16 +1145,121 @@
         <div class="story-card fade-up">
           <div class="story-card-icon"><i class="fa-solid fa-users"></i></div>
           <h4>Family Run</h4>
-          <p>Local ownership means we treat every car like it's our own.</p>
+          <p>Three generations keeping Turlock moving — every car treated like our own.</p>
         </div>
         <div class="story-card fade-up">
           <div class="story-card-icon"><i class="fa-solid fa-map-pin"></i></div>
           <h4>Turlock Rooted</h4>
-          <p>Proudly serving Turlock, Modesto, Ceres &amp; the Central Valley.</p>
+          <p>Proudly serving Turlock, Modesto, Ceres &amp; the Central Valley since 2002.</p>
         </div>
       </div>
 
     </div>
+  </section>
+
+  <!-- ============================================================
+       MEET THE TEAM
+  ============================================================ -->
+  <section class="team">
+    <div class="team-header fade-up">
+      <span class="section-label">The People Behind the Shop</span>
+      <h2 class="section-title">Meet the Family</h2>
+      <div class="divider center"></div>
+      <p class="section-sub" style="margin: 16px auto 0; text-align: center;">The Tire Boys is run by a tight-knit family that has been serving Turlock together for over 20 years.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card fade-up">
+        <div class="team-avatar">C</div>
+        <h3>Charles</h3>
+        <p>Co-Founder &amp; Lead Technician</p>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-avatar">B</div>
+        <h3>Bobby</h3>
+        <p>Co-Founder &amp; Operations</p>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-avatar">B</div>
+        <h3>Berry</h3>
+        <p>Technician &amp; Family</p>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-avatar">K</div>
+        <h3>Kenny</h3>
+        <p>Technician &amp; Family</p>
+      </div>
+      <div class="team-family fade-up">
+        <i class="fa-solid fa-heart"></i>
+        <p><strong>…and the rest of the family.</strong> The Tire Boys has always been a family operation — from the founders to the next generation keeping the tradition going.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PHOTO SLIDESHOW
+       To add your photos: replace each <div class="slide-placeholder">
+       block with: <img src="your-photo.jpg" alt="Description">
+       inside the <div class="slide"> wrapper.
+  ============================================================ -->
+  <section class="slideshow-section">
+    <div class="slideshow-header fade-up">
+      <span class="section-label" style="color: #ff6666;">Our Shop</span>
+      <h2 class="section-title light">See Us in Action</h2>
+      <div class="divider center"></div>
+    </div>
+
+    <div class="slideshow-outer fade-up">
+      <div class="slideshow-track" id="slideTrack">
+
+        <div class="slide">
+          <!-- Replace this block with: <img src="photo1.jpg" alt="The Tire Boys shop"> -->
+          <div class="slide-placeholder">
+            <i class="fa-solid fa-camera"></i>
+            <span>Add Shop Photo</span>
+          </div>
+        </div>
+
+        <div class="slide">
+          <!-- Replace this block with: <img src="photo2.jpg" alt="Our team at work"> -->
+          <div class="slide-placeholder">
+            <i class="fa-solid fa-camera"></i>
+            <span>Add Team Photo</span>
+          </div>
+        </div>
+
+        <div class="slide">
+          <!-- Replace this block with: <img src="photo3.jpg" alt="Vehicle service"> -->
+          <div class="slide-placeholder">
+            <i class="fa-solid fa-camera"></i>
+            <span>Add Service Photo</span>
+          </div>
+        </div>
+
+        <div class="slide">
+          <!-- Replace this block with: <img src="photo4.jpg" alt="The Tire Boys exterior"> -->
+          <div class="slide-placeholder">
+            <i class="fa-solid fa-camera"></i>
+            <span>Add Exterior Photo</span>
+          </div>
+        </div>
+
+        <div class="slide">
+          <!-- Replace this block with: <img src="photo5.jpg" alt="Customer service"> -->
+          <div class="slide-placeholder">
+            <i class="fa-solid fa-camera"></i>
+            <span>Add Customer Photo</span>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="slide-btn slide-prev" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="slide-btn slide-next" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide-dots" id="slideDots"></div>
+    <p class="slide-note">Photos coming soon &mdash; check back for a look inside the shop.</p>
   </section>
 
   <!-- ============================================================
@@ -1227,6 +1492,52 @@
       });
     }, { threshold: 0.12 });
     fadeEls.forEach(el => fadeObserver.observe(el));
+
+    /* ------ Photo Slideshow ------ */
+    (function() {
+      const track    = document.getElementById('slideTrack');
+      const dotsWrap = document.getElementById('slideDots');
+      const prevBtn  = document.querySelector('.slide-prev');
+      const nextBtn  = document.querySelector('.slide-next');
+      if (!track) return;
+
+      const slides = Array.from(track.querySelectorAll('.slide'));
+      let current  = 0;
+      let timer;
+
+      function buildDots() {
+        dotsWrap.innerHTML = '';
+        slides.forEach((_, i) => {
+          const d = document.createElement('button');
+          d.className = 'slide-dot' + (i === 0 ? ' active' : '');
+          d.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+          d.addEventListener('click', () => { goTo(i); resetTimer(); });
+          dotsWrap.appendChild(d);
+        });
+      }
+
+      function updateDots() {
+        dotsWrap.querySelectorAll('.slide-dot').forEach((d, i) =>
+          d.classList.toggle('active', i === current));
+      }
+
+      function goTo(index) {
+        current = (index + slides.length) % slides.length;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        updateDots();
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), 5000);
+      }
+
+      prevBtn.addEventListener('click', () => { goTo(current - 1); resetTimer(); });
+      nextBtn.addEventListener('click', () => { goTo(current + 1); resetTimer(); });
+
+      buildDots();
+      resetTimer();
+    })();
 
     /* ------ Scroll-to-Top Button ------ */
     const scrollBtn = document.getElementById('scroll-top');
