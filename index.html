@@ -1386,15 +1386,26 @@
           rgba(0,0,0,0.65) 100%
         );
       }
+      /* Span full image height so title stays on faces, subtitle drops to chest */
       .welcome-content {
         position: absolute;
-        bottom: 48px;
-        left: 0; right: 0;
+        top: 0; bottom: 0; left: 0; right: 0;
         z-index: 2;
-        padding: 0 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 28%;
       }
       .welcome-title { font-size: clamp(2.8rem, 14vw, 5rem); }
-      .welcome-sub { font-size: 1rem; }
+      /* Push subtitle and scroll hint to the bottom */
+      .welcome-sub {
+        font-size: 1rem;
+        margin-top: auto;
+        margin-bottom: 8px;
+      }
+      .scroll-hint { margin-top: 10px; }
 
       .hero { padding: 80px 20px 70px; }
       .hero-badge { gap: 24px; }
