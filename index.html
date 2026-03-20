@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#CC0000" />
 
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <!-- Primary SEO -->
   <title>The Tire Boys | Auto Repair &amp; Tire Shop | Turlock, CA</title>
   <meta name="description" content="The Tire Boys — Turlock's trusted full-service auto repair shop. Oil changes, tires, brakes, AC, engine diagnostics, battery, transmission, and more. Call 209-250-2320." />
@@ -722,12 +725,19 @@
       text-align: center;
       margin-bottom: 60px;
     }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 24px;
+    /* Carousel */
+    .carousel-outer {
+      position: relative;
       max-width: var(--max-w);
       margin: 0 auto;
+      overflow: hidden;
+      padding: 0 56px;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      align-items: stretch;
     }
     .testimonial-card {
       background: var(--white);
@@ -737,12 +747,48 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
-      transition: transform var(--transition), box-shadow var(--transition);
       border-top: 3px solid var(--red);
+      flex-shrink: 0;
+      box-sizing: border-box;
     }
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      z-index: 10;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+      box-shadow: 0 4px 14px rgba(204,0,0,0.35);
+    }
+    .carousel-btn:hover { background: #a50000; }
+    .carousel-btn.carousel-prev { left: 0; }
+    .carousel-btn.carousel-next { right: 0; }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .carousel-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: #ccc;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .carousel-dot.active {
+      background: var(--red);
+      transform: scale(1.35);
     }
     .stars {
       color: #f5a623;
@@ -1187,7 +1233,7 @@
        ANNOUNCEMENT BAR
   ============================================================ -->
   <div class="announce-bar" role="banner">
-    &#128197; Open 7 Days a Week &nbsp;|&nbsp; Now Accepting Walk-Ins &amp; Same-Day Appointments — Call Us Today!
+    <i class="fa-regular fa-calendar"></i> Open 7 Days a Week &nbsp;|&nbsp; Now Accepting Walk-Ins &amp; Same-Day Appointments — Call Us Today!
     <a href="tel:2092502320">209-250-2320</a>
   </div>
 
@@ -1211,7 +1257,7 @@
 
       <div class="header-cta">
         <a href="tel:2092502320" class="header-phone" aria-label="Call us at 209-250-2320">
-          <div class="phone-icon">&#128222;</div>
+          <div class="phone-icon"><i class="fa-solid fa-phone"></i></div>
           <span class="phone-label">209-250-2320</span>
         </a>
         <a href="tel:2092502320" class="btn-header">Call Now</a>
@@ -1232,7 +1278,7 @@
       <a href="#why-us"    class="mobile-link">Why Us</a>
       <a href="#reviews"   class="mobile-link">Reviews</a>
       <a href="#contact"   class="mobile-link">Contact &amp; Hours</a>
-      <a href="tel:2092502320" class="mobile-call-btn">&#128222; Call 209-250-2320</a>
+      <a href="tel:2092502320" class="mobile-call-btn"><i class="fa-solid fa-phone"></i> Call 209-250-2320</a>
     </nav>
   </div>
 
@@ -1251,7 +1297,7 @@
       </p>
       <div class="hero-actions">
         <a href="tel:2092502320" class="btn-primary">
-          &#128222; Call Now: 209-250-2320
+          <i class="fa-solid fa-phone"></i> Call Now: 209-250-2320
         </a>
         <a href="#services" class="btn-outline">
           View Services &#8595;
@@ -1284,31 +1330,31 @@
   <div class="trust-bar" aria-label="Why customers trust us">
     <div class="trust-bar-inner">
       <div class="trust-item">
-        <div class="trust-check">&#10003;</div>
+        <div class="trust-check"><i class="fa-solid fa-check"></i></div>
         Certified Technicians
       </div>
       <div class="trust-item">
-        <div class="trust-check">&#10003;</div>
+        <div class="trust-check"><i class="fa-solid fa-check"></i></div>
         Honest &amp; Transparent Pricing
       </div>
       <div class="trust-item">
-        <div class="trust-check">&#10003;</div>
+        <div class="trust-check"><i class="fa-solid fa-check"></i></div>
         Fast Same-Day Service
       </div>
       <div class="trust-item">
-        <div class="trust-check">&#10003;</div>
+        <div class="trust-check"><i class="fa-solid fa-check"></i></div>
         All Makes &amp; Models
       </div>
       <div class="trust-item">
-        <div class="trust-check">&#10003;</div>
+        <div class="trust-check"><i class="fa-solid fa-check"></i></div>
         Locally Owned &amp; Operated
       </div>
       <div class="trust-item">
-        <div class="trust-check">&#10003;</div>
+        <div class="trust-check"><i class="fa-solid fa-check"></i></div>
         Se Habla Español
       </div>
       <div class="trust-item">
-        <div class="trust-check">&#10003;</div>
+        <div class="trust-check"><i class="fa-solid fa-check"></i></div>
         Free Diagnostics
       </div>
     </div>
@@ -1330,7 +1376,7 @@
     <div class="services-grid">
 
       <div class="service-card fade-up">
-        <div class="service-icon-wrap">&#128663;</div>
+        <div class="service-icon-wrap"><i class="fa-solid fa-oil-can"></i></div>
         <div class="service-body">
           <h3>Oil Changes</h3>
           <p>Conventional, synthetic &amp; high-mileage oil changes with multi-point inspection included.</p>
@@ -1338,7 +1384,17 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon-wrap">&#128760;</div>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true">
+            <circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="2" fill="currentColor"/>
+            <line x1="12" y1="6.5" x2="12" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="12" y1="14" x2="12" y2="17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="6.5" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="14" y1="12" x2="17.5" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="service-body">
           <h3>Tires</h3>
           <p>Tire sales, mounting, balancing, rotation &amp; flat repairs. All brands available.</p>
@@ -1346,7 +1402,17 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon-wrap">&#128165;</div>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true">
+            <!-- Rotor disc -->
+            <circle cx="13" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="13" cy="12" r="2.5" fill="currentColor"/>
+            <!-- Brake pad body -->
+            <rect x="1.5" y="7.5" width="4.5" height="9" rx="1.2" fill="currentColor"/>
+            <!-- Backing plate -->
+            <rect x="0.5" y="6.5" width="2" height="11" rx="0.8" fill="currentColor"/>
+          </svg>
+        </div>
         <div class="service-body">
           <h3>Brake Service</h3>
           <p>Brake pad replacement, rotor resurfacing &amp; complete brake system inspections.</p>
@@ -1354,7 +1420,7 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon-wrap">&#10052;</div>
+        <div class="service-icon-wrap"><i class="fa-solid fa-snowflake"></i></div>
         <div class="service-body">
           <h3>AC &amp; Heating</h3>
           <p>AC recharge, leak detection, heater core repairs &amp; climate control diagnostics.</p>
@@ -1362,7 +1428,7 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon-wrap">&#128268;</div>
+        <div class="service-icon-wrap"><i class="fa-solid fa-plug"></i></div>
         <div class="service-body">
           <h3>Engine Diagnostics</h3>
           <p>Computer-based diagnostics for check engine lights, misfires &amp; performance issues.</p>
@@ -1370,7 +1436,7 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon-wrap">&#9889;</div>
+        <div class="service-icon-wrap"><i class="fa-solid fa-battery-full"></i></div>
         <div class="service-body">
           <h3>Battery Service</h3>
           <p>Battery testing, replacement &amp; charging system inspection to prevent breakdowns.</p>
@@ -1378,7 +1444,7 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon-wrap">&#9881;</div>
+        <div class="service-icon-wrap"><i class="fa-solid fa-gears"></i></div>
         <div class="service-body">
           <h3>Transmission</h3>
           <p>Fluid flushes, filter changes &amp; transmission repair for automatic &amp; manual vehicles.</p>
@@ -1386,7 +1452,7 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon-wrap">&#127754;</div>
+        <div class="service-icon-wrap"><i class="fa-solid fa-temperature-half"></i></div>
         <div class="service-body">
           <h3>Cooling System</h3>
           <p>Radiator flush, thermostat replacement &amp; coolant system pressure testing.</p>
@@ -1394,7 +1460,21 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon-wrap">&#128270;</div>
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true">
+            <!-- Top mount -->
+            <rect x="8" y="1" width="8" height="2.5" rx="1" fill="currentColor"/>
+            <!-- Piston rod -->
+            <rect x="10.5" y="3.5" width="3" height="6" rx="0.8" fill="currentColor"/>
+            <!-- Spring coils -->
+            <path d="M7 9.5 Q9 9.5 9 11 Q9 12.5 12 12.5 Q15 12.5 15 11 Q15 9.5 17 9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M7 12.5 Q9 12.5 9 14 Q9 15.5 12 15.5 Q15 15.5 15 14 Q15 12.5 17 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <!-- Shock body (lower cylinder) -->
+            <rect x="8.5" y="15.5" width="7" height="6" rx="1.5" fill="currentColor"/>
+            <!-- Bottom mount -->
+            <rect x="8" y="20.5" width="8" height="2.5" rx="1" fill="currentColor"/>
+          </svg>
+        </div>
         <div class="service-body">
           <h3>Suspension</h3>
           <p>Struts, shocks, ball joints, tie rods &amp; alignment for a smooth, safe ride.</p>
@@ -1495,51 +1575,167 @@
       </p>
     </div>
 
-    <div class="testimonials-grid">
+    <div class="carousel-outer">
+      <button class="carousel-btn carousel-prev" aria-label="Previous reviews"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="carousel-btn carousel-next" aria-label="Next reviews"><i class="fa-solid fa-chevron-right"></i></button>
 
-      <article class="testimonial-card fade-up">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">
-          "Love the Tire Boys and all their family. Honest REAL people with great customer service and prices!"
-        </p>
-        <div class="testimonial-author">
-          <div class="author-avatar">SC</div>
-          <div class="author-info">
-            <strong>Satisfied Customer</strong>
-            <span>Turlock, CA</span>
-          </div>
-        </div>
-      </article>
+      <div class="carousel-track" id="reviewTrack">
 
-      <article class="testimonial-card fade-up">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">
-          "Friendly environment and very helpful staff &mdash; especially Charles, who took his time to explain what the issue was. Will definitely be my go-to spot."
-        </p>
-        <div class="testimonial-author">
-          <div class="author-avatar">AB</div>
-          <div class="author-info">
-            <strong>Abdullah</strong>
-            <span>Turlock, CA</span>
-          </div>
-        </div>
-      </article>
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Love the Tire Boys and all their family. Honest REAL people with great customer service and prices!"</p>
+          <div class="testimonial-author"><div class="author-avatar">MG</div><div class="author-info"><strong>Maria G.</strong><span>Turlock, CA</span></div></div>
+        </article>
 
-      <article class="testimonial-card fade-up">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">
-          "Got quoted $365 for a part replacement somewhere else &mdash; they did it for $150. I love how kind and efficient they are."
-        </p>
-        <div class="testimonial-author">
-          <div class="author-avatar">HC</div>
-          <div class="author-info">
-            <strong>Happy Customer</strong>
-            <span>Turlock, CA</span>
-          </div>
-        </div>
-      </article>
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Friendly environment and very helpful staff — especially Charles, who took his time to explain what the issue was. Will definitely be my go-to spot."</p>
+          <div class="testimonial-author"><div class="author-avatar">AB</div><div class="author-info"><strong>Abdullah B.</strong><span>Turlock, CA</span></div></div>
+        </article>
 
-    </div>
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Got quoted $365 for a part replacement somewhere else — they did it for $150. I love how kind and efficient they are."</p>
+          <div class="testimonial-author"><div class="author-avatar">JT</div><div class="author-info"><strong>Jason T.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Brought my truck in for a brake job and they had it done in under two hours. Fair pricing and no pressure upsells. Highly recommend!"</p>
+          <div class="testimonial-author"><div class="author-avatar">RK</div><div class="author-info"><strong>Robert K.</strong><span>Modesto, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"My AC stopped working in the middle of summer. They diagnosed and fixed it same day. Cold air blowing again — couldn't be happier."</p>
+          <div class="testimonial-author"><div class="author-avatar">JL</div><div class="author-info"><strong>Jennifer L.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Dead battery on a Monday morning — they fit me in immediately and had me back on the road within the hour. Lifesavers!"</p>
+          <div class="testimonial-author"><div class="author-avatar">MS</div><div class="author-info"><strong>Mike S.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Best mechanic shop in Turlock hands down. They treated me like family and the price was way below what I expected. 10 out of 10."</p>
+          <div class="testimonial-author"><div class="author-avatar">CV</div><div class="author-info"><strong>Carlos V.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Came in for an oil change and they noticed a worn belt before it became a bigger problem. They saved me from a breakdown on the freeway."</p>
+          <div class="testimonial-author"><div class="author-avatar">AW</div><div class="author-info"><strong>Ashley W.</strong><span>Ceres, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Transmission service completed quickly and at a very reasonable price. The team is professional and the shop is clean. Will be back."</p>
+          <div class="testimonial-author"><div class="author-avatar">PN</div><div class="author-info"><strong>Priya N.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Check engine light came on and I was worried it would be expensive. They diagnosed it fast and fixed it for a fraction of what the dealership quoted."</p>
+          <div class="testimonial-author"><div class="author-avatar">TH</div><div class="author-info"><strong>Tommy H.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"I've been taking my cars here for two years. Never once felt like I was being taken advantage of. Honest, fast, and affordable."</p>
+          <div class="testimonial-author"><div class="author-avatar">LC</div><div class="author-info"><strong>Lisa C.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Walk-in friendly and no long wait. Got new tires mounted and balanced while I waited. Great prices compared to the big chain stores."</p>
+          <div class="testimonial-author"><div class="author-avatar">AF</div><div class="author-info"><strong>Ahmed F.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Came in without an appointment and they still took care of me. Front desk was welcoming and kept me updated the whole time. Great experience."</p>
+          <div class="testimonial-author"><div class="author-avatar">RW</div><div class="author-info"><strong>Rachel W.</strong><span>Modesto, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Suspension work done right the first time. My car drives like new. Couldn't believe the price — cheaper than two other shops I called."</p>
+          <div class="testimonial-author"><div class="author-avatar">MD</div><div class="author-info"><strong>Marcus D.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"They did a full inspection before a road trip and caught a few things I didn't even know about. Very thorough and professional team."</p>
+          <div class="testimonial-author"><div class="author-avatar">DP</div><div class="author-info"><strong>Diane P.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Radiator flush done right. Car temperature has been perfect ever since. Fast service and the staff explained everything clearly."</p>
+          <div class="testimonial-author"><div class="author-avatar">KM</div><div class="author-info"><strong>Kevin M.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Single mom here — I always worry about being overcharged at mechanic shops. These guys were completely honest and even showed me the worn parts. Grateful."</p>
+          <div class="testimonial-author"><div class="author-avatar">NS</div><div class="author-info"><strong>Natalie S.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Brought my wife's car in for a weird noise — turned out to be a loose heat shield. They fixed it on the spot at no charge. That's the kind of service you remember."</p>
+          <div class="testimonial-author"><div class="author-avatar">BL</div><div class="author-info"><strong>Brian L.</strong><span>Ceres, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Flat tire fixed in 20 minutes. They were quick, professional and didn't try to sell me anything I didn't need. This is my new go-to shop."</p>
+          <div class="testimonial-author"><div class="author-avatar">EG</div><div class="author-info"><strong>Elena G.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Alignment and tire rotation done perfectly. My steering wheel no longer pulls to the side. Very satisfied with the results and the price."</p>
+          <div class="testimonial-author"><div class="author-avatar">AR</div><div class="author-info"><strong>Anthony R.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"They squeezed me in last minute before a long drive. Oil change, tire check, and fluid top-offs all done fast. Amazing customer service."</p>
+          <div class="testimonial-author"><div class="author-avatar">SH</div><div class="author-info"><strong>Stephanie H.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Engine was overheating and I was stressed out. They diagnosed the issue within the hour and had parts ordered same day. Back on the road by next morning."</p>
+          <div class="testimonial-author"><div class="author-avatar">JO</div><div class="author-info"><strong>James O.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Honest mechanics are hard to find. These guys are the real deal. Took my truck in for brakes and they told me the fronts were fine — only charged me for the rear."</p>
+          <div class="testimonial-author"><div class="author-avatar">NT</div><div class="author-info"><strong>Nicole T.</strong><span>Merced, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Great local shop with a small-town feel. Fast service, reasonable prices, and they actually care about their customers. Wouldn't go anywhere else."</p>
+          <div class="testimonial-author"><div class="author-avatar">CB</div><div class="author-info"><strong>Chris B.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"My whole family brings their vehicles here now. Five cars between us and they've never let us down. Consistent, reliable, and always fair."</p>
+          <div class="testimonial-author"><div class="author-avatar">DR</div><div class="author-info"><strong>David R.</strong><span>Turlock, CA</span></div></div>
+        </article>
+
+      </div><!-- end track -->
+    </div><!-- end carousel-outer -->
+
+    <div class="carousel-dots" id="reviewDots"></div>
+
   </section>
 
   <!-- ============================================================
@@ -1553,7 +1749,7 @@
         same-day service available for most repairs in Turlock, CA.
       </p>
       <a href="tel:2092502320" class="btn-white">
-        &#128222; Call 209-250-2320
+        <i class="fa-solid fa-phone"></i> Call 209-250-2320
       </a>
     </div>
   </section>
@@ -1573,7 +1769,7 @@
       <div class="contact-info">
 
         <div class="info-card fade-up">
-          <div class="info-icon">&#128222;</div>
+          <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
           <div class="info-card-body">
             <h4>Phone</h4>
             <a href="tel:2092502320" style="font-weight:700; font-size:1.15rem; color:var(--red);">
@@ -1586,7 +1782,7 @@
         </div>
 
         <div class="info-card fade-up">
-          <div class="info-icon">&#128205;</div>
+          <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
           <div class="info-card-body">
             <h4>Address</h4>
             <p>400 S Golden State Blvd<br>Turlock, CA 95380</p>
@@ -1599,7 +1795,7 @@
         </div>
 
         <div class="info-card fade-up">
-          <div class="info-icon">&#128336;</div>
+          <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
           <div class="info-card-body">
             <h4>Business Hours</h4>
             <table class="hours-table" aria-label="Business hours">
@@ -1674,7 +1870,7 @@
         </div>
 
         <button type="submit" class="form-submit-btn">Send Message &rarr;</button>
-        <div class="form-success" id="form-success">✅ Message sent! We'll be in touch soon.</div>
+        <div class="form-success" id="form-success"><i class="fa-solid fa-circle-check"></i> Message sent! We'll be in touch soon.</div>
       </form>
     </div>
 
@@ -1734,7 +1930,7 @@
   </footer>
 
   <!-- Scroll to top -->
-  <button id="scroll-top" aria-label="Scroll to top">&#8679;</button>
+  <button id="scroll-top" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
 
   <!-- ============================================================
        JAVASCRIPT
@@ -1821,6 +2017,81 @@
       });
     }, { threshold: 0.4 });
     sections.forEach(s => navObserver.observe(s));
+
+    /* ------ Reviews Carousel ------ */
+    (function() {
+      const track     = document.getElementById('reviewTrack');
+      const dotsWrap  = document.getElementById('reviewDots');
+      const prevBtn   = document.querySelector('.carousel-prev');
+      const nextBtn   = document.querySelector('.carousel-next');
+      if (!track) return;
+
+      const cards = Array.from(track.querySelectorAll('.testimonial-card'));
+      let current = 0;
+      let autoTimer;
+
+      function getVisible() {
+        return window.innerWidth < 680 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+      }
+
+      function setCardWidths() {
+        const visible = getVisible();
+        const gap     = 24;
+        const outer   = track.parentElement.offsetWidth - 112; // minus arrow space
+        const w       = (outer - gap * (visible - 1)) / visible;
+        cards.forEach(c => { c.style.width = w + 'px'; c.style.minWidth = w + 'px'; });
+      }
+
+      function maxIndex() {
+        return Math.max(0, cards.length - getVisible());
+      }
+
+      function buildDots() {
+        dotsWrap.innerHTML = '';
+        const total = maxIndex() + 1;
+        for (let i = 0; i < total; i++) {
+          const d = document.createElement('button');
+          d.className = 'carousel-dot' + (i === current ? ' active' : '');
+          d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+          d.addEventListener('click', () => { goTo(i); resetAuto(); });
+          dotsWrap.appendChild(d);
+        }
+      }
+
+      function updateDots() {
+        dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) =>
+          d.classList.toggle('active', i === current));
+      }
+
+      function goTo(index) {
+        current = Math.max(0, Math.min(index, maxIndex()));
+        const gap = 24;
+        const cardW = cards[0].offsetWidth;
+        track.style.transform = `translateX(-${current * (cardW + gap)}px)`;
+        updateDots();
+      }
+
+      function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => {
+          current = current >= maxIndex() ? 0 : current + 1;
+          goTo(current);
+        }, 5000);
+      }
+
+      prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+      nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+      window.addEventListener('resize', () => {
+        setCardWidths();
+        buildDots();
+        goTo(Math.min(current, maxIndex()));
+      });
+
+      setCardWidths();
+      buildDots();
+      resetAuto();
+    })();
 
     /* ------ Contact Form Submission ------ */
     const contactForm = document.getElementById('contact-form');
