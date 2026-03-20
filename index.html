@@ -462,6 +462,8 @@
       z-index: 1;
       overflow: hidden;
     }
+    /* img tag hidden on desktop — CSS background used instead */
+    .welcome-bg-img { display: none; }
     .welcome-overlay {
       position: absolute;
       inset: 0;
@@ -1357,11 +1359,39 @@
       .emergency-cta-btns { flex-direction: column; }
       .emergency-cta-btns .btn-white { width: 100%; justify-content: center; }
 
-      /* Fix background-attachment: fixed bug on mobile browsers */
+      /* Mobile: stack image naturally in flow, text overlaid at bottom */
       .welcome-screen {
-        background-attachment: scroll;
-        background-position: center top;
-        min-height: 100svh; /* use svh to avoid mobile browser chrome issues */
+        background-image: none;
+        background-color: var(--black);
+        height: auto;
+        min-height: unset;
+        display: block;
+        padding: 0;
+      }
+      .welcome-bg-img {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: auto;
+        z-index: 0;
+        filter: brightness(0.72);
+      }
+      .welcome-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(to bottom,
+          rgba(0,0,0,0.35) 0%,
+          rgba(0,0,0,0.1) 50%,
+          rgba(0,0,0,0.65) 100%
+        );
+      }
+      .welcome-content {
+        position: absolute;
+        bottom: 48px;
+        left: 0; right: 0;
+        z-index: 2;
+        padding: 0 20px;
       }
       .welcome-title { font-size: clamp(2.8rem, 14vw, 5rem); }
       .welcome-sub { font-size: 1rem; }
@@ -1464,6 +1494,7 @@
        WELCOME SCREEN (photo + greeting, hero slides over on scroll)
   ============================================================ -->
   <section class="welcome-screen" aria-label="Welcome to The Tire Boys">
+    <img class="welcome-bg-img" src="images/team.jpg" alt="The Tire Boys team" />
     <div class="welcome-overlay"></div>
     <div class="welcome-content">
       <span class="welcome-tag">Welcome to</span>
