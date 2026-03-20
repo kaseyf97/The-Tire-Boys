@@ -284,6 +284,23 @@
       background: var(--red-dk);
       transform: translateY(-1px);
     }
+    .btn-book {
+      background: transparent;
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 9px 18px;
+      border-radius: var(--radius);
+      border: 2px solid rgba(255,255,255,0.35);
+      transition: border-color var(--transition), background var(--transition);
+      white-space: nowrap;
+    }
+    .btn-book:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
 
     /* Hamburger */
     .hamburger {
@@ -762,7 +779,7 @@
     }
 
     @media (max-width: 768px) {
-      .main-nav, .btn-header { display: none; }
+      .main-nav, .btn-header, .btn-book { display: none; }
       .hamburger { display: flex; }
       .mobile-nav { display: block; }
       .header-phone .phone-label { display: none; }
@@ -813,13 +830,10 @@
       <nav class="main-nav" aria-label="Primary navigation">
         <a href="about.html">About</a>
         <a href="services.html" class="active">Services</a>
-        <a href="index.html#why-us">Why Us</a>
-        <a href="index.html#reviews">Reviews</a>
-        <a href="index.html#contact">Contact</a>
-        <a href="appointment.html">Book Appointment</a>
       </nav>
 
       <div class="header-cta">
+        <a href="appointment.html" class="btn-book">Book Appointment</a>
         <a href="tel:2092502320" class="header-phone" aria-label="Call us at 209-250-2320">
           <div class="phone-icon"><i class="fa-solid fa-phone"></i></div>
           <span class="phone-label">209-250-2320</span>
