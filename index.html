@@ -1399,12 +1399,26 @@
         padding-top: 6%;
         padding-bottom: 0;
       }
+      /* Grey box behind title group */
+      .welcome-title-group {
+        background: rgba(80,80,80,0.45);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        padding: 12px 20px 14px;
+        border-radius: 10px;
+        text-align: center;
+      }
       .welcome-title { font-size: clamp(2.8rem, 14vw, 5rem); }
-      /* Push subtitle and scroll hint to the bottom */
+      /* Push subtitle to bottom with its own grey box */
       .welcome-sub {
         font-size: 1rem;
         margin-top: auto;
         margin-bottom: 4px;
+        background: rgba(80,80,80,0.45);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        padding: 10px 16px;
+        border-radius: 10px;
       }
       .scroll-hint { margin-top: 6px; }
 
@@ -1509,8 +1523,10 @@
     <img class="welcome-bg-img" src="images/team.jpg" alt="The Tire Boys team" />
     <div class="welcome-overlay"></div>
     <div class="welcome-content">
-      <span class="welcome-tag">Welcome to</span>
-      <h2 class="welcome-title">THE TIRE <span>BOYS</span></h2>
+      <div class="welcome-title-group">
+        <span class="welcome-tag">Welcome to</span>
+        <h2 class="welcome-title">THE TIRE <span>BOYS</span></h2>
+      </div>
       <p class="welcome-sub">Turlock&rsquo;s trusted auto repair &amp; tire shop &mdash; serving our community for over 20 years.</p>
       <div class="scroll-hint">
         <span>Scroll to explore</span>
