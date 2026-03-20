@@ -449,12 +449,85 @@
     /* ============================================================
        HERO
     ============================================================ */
+    /* ============================================================
+       WELCOME SCREEN
+    ============================================================ */
+    .welcome-screen {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background: url('images/team.jpg') center 10% / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .welcome-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.48);
+    }
+    .welcome-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 20px;
+      animation: fadeUp 1s ease both;
+    }
+    .welcome-tag {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 16px;
+    }
+    .welcome-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 11vw, 9rem);
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .welcome-title span { color: var(--red); }
+    .welcome-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.78);
+      max-width: 520px;
+      margin: 0 auto 48px;
+      line-height: 1.65;
+    }
+    .scroll-hint {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    .scroll-hint i { font-size: 1rem; }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.55; }
+      50% { transform: translateY(10px); opacity: 0.9; }
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
     .hero {
       position: relative;
-      background: var(--black) url('images/team.jpg') center 10% / cover no-repeat;
+      background: var(--black);
       overflow: hidden;
       padding: 100px 40px 90px;
       text-align: center;
+      z-index: 5;
+      box-shadow: 0 -8px 40px rgba(0,0,0,0.8);
     }
     /* Option B: hide split layout, use full-bg mode */
     .hero-inner {
@@ -476,12 +549,14 @@
       background-size: 48px 48px;
       pointer-events: none;
     }
-    /* Dark overlay over photo */
+    /* Red glow blob */
     .hero::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.52);
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse, rgba(204,0,0,0.22) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-content {
@@ -1376,6 +1451,22 @@
   <a href="appointment.html" class="mobile-book-bar">
     <i class="fa-solid fa-calendar-check"></i> Book an Appointment
   </a>
+
+  <!-- ============================================================
+       WELCOME SCREEN (photo + greeting, hero slides over on scroll)
+  ============================================================ -->
+  <section class="welcome-screen" aria-label="Welcome to The Tire Boys">
+    <div class="welcome-overlay"></div>
+    <div class="welcome-content">
+      <span class="welcome-tag">Welcome to</span>
+      <h2 class="welcome-title">THE TIRE <span>BOYS</span></h2>
+      <p class="welcome-sub">Turlock&rsquo;s trusted auto repair &amp; tire shop &mdash; serving our community for over 20 years.</p>
+      <div class="scroll-hint">
+        <span>Scroll to explore</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================================
        HERO
