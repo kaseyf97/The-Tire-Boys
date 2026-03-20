@@ -937,6 +937,107 @@
     }
 
     /* ============================================================
+       CONTACT FORM
+    ============================================================ */
+    .contact-form-wrap {
+      margin-top: 52px;
+      background: var(--black);
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 44px 40px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-form-wrap h3 {
+      font-size: 1.6rem;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .contact-form-wrap p.form-sub {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 28px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-size: 0.97rem;
+      font-family: inherit;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(204,0,0,0.15);
+    }
+    .form-group select option {
+      background: #111;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .form-submit-btn {
+      width: 100%;
+      margin-top: 8px;
+      padding: 15px;
+      background: var(--red);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background var(--transition), transform 0.15s;
+    }
+    .form-submit-btn:hover { background: #a50000; transform: translateY(-1px); }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 28px;
+      color: #4caf50;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    @media (max-width: 600px) {
+      .contact-form-wrap { padding: 28px 18px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
        FOOTER
     ============================================================ */
     footer {
@@ -1522,6 +1623,61 @@
       </div>
 
     </div>
+
+    <!-- CONTACT FORM -->
+    <div class="contact-form-wrap fade-up">
+      <h3>Send Us a Message</h3>
+      <p class="form-sub">Fill out the form below and we'll get back to you as soon as possible.</p>
+
+      <form id="contact-form" action="https://formspree.io/f/maqpvgaq" method="POST">
+        <input type="hidden" name="_replyto" value="kaseyfleming67@gmail.com" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-name">Full Name *</label>
+            <input type="text" id="cf-name" name="name" placeholder="John Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="cf-phone">Phone Number *</label>
+            <input type="tel" id="cf-phone" name="phone" placeholder="209-555-0000" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-email">Email Address</label>
+            <input type="email" id="cf-email" name="email" placeholder="you@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="cf-reason">Reason for Contact *</label>
+            <select id="cf-reason" name="reason" required>
+              <option value="" disabled selected>Select a reason…</option>
+              <option value="Schedule Appointment">Schedule an Appointment</option>
+              <option value="Get a Quote">Get a Quote</option>
+              <option value="Oil Change">Oil Change</option>
+              <option value="Tire Service">Tire Service</option>
+              <option value="Brake Repair">Brake Repair</option>
+              <option value="Engine Diagnostics">Engine Diagnostics</option>
+              <option value="AC / Heating">AC / Heating</option>
+              <option value="Transmission">Transmission</option>
+              <option value="General Question">General Question</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="cf-message">Additional Details</label>
+            <textarea id="cf-message" name="message" placeholder="Tell us more about your vehicle or what you need…"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="form-submit-btn">Send Message &rarr;</button>
+        <div class="form-success" id="form-success">✅ Message sent! We'll be in touch soon.</div>
+      </form>
+    </div>
+
   </section>
 
   <!-- ============================================================
@@ -1665,6 +1821,38 @@
       });
     }, { threshold: 0.4 });
     sections.forEach(s => navObserver.observe(s));
+
+    /* ------ Contact Form Submission ------ */
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = contactForm.querySelector('.form-submit-btn');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+        try {
+          const formData = new FormData(contactForm);
+          const data = Object.fromEntries(formData.entries());
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (response.ok) {
+            contactForm.reset();
+            formSuccess.style.display = 'block';
+            btn.style.display = 'none';
+          } else {
+            btn.textContent = 'Error — Try Again';
+            btn.disabled = false;
+          }
+        } catch {
+          btn.textContent = 'Error — Try Again';
+          btn.disabled = false;
+        }
+      });
+    }
   </script>
 
 </body>
