@@ -1357,6 +1357,15 @@
       .emergency-cta-btns { flex-direction: column; }
       .emergency-cta-btns .btn-white { width: 100%; justify-content: center; }
 
+      /* Fix background-attachment: fixed bug on mobile browsers */
+      .welcome-screen {
+        background-attachment: scroll;
+        background-position: center top;
+        min-height: 100svh; /* use svh to avoid mobile browser chrome issues */
+      }
+      .welcome-title { font-size: clamp(2.8rem, 14vw, 5rem); }
+      .welcome-sub { font-size: 1rem; }
+
       .hero { padding: 80px 20px 70px; }
       .hero-badge { gap: 24px; }
       /* Mobile: stack hero vertically */
