@@ -54,12 +54,13 @@ export default async function handler(req, res) {
     });
 
     // 2. Send push notification via ntfy
-    await fetch('https://ntfy.sh/tireboys-alerts-2026', {
+    await fetch(`https://ntfy.sh/${process.env.NTFY_TOPIC}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'text/plain',
         'Title': 'New Appointment - The Tire Boys',
-        'Priority': 'high'
+        'Priority': 'high',
+        'Authorization': `Bearer ${process.env.NTFY_TOKEN}`
       },
       body: `${safeName} | ${safePhone} | ${vehicleYear} ${safeMake} ${safeModel} | ${safeService} | ${preferredDate} ${preferredTime}`
     });
