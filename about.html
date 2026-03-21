@@ -1003,6 +1003,7 @@
       margin: 0 auto;
       border-radius: var(--radius);
       overflow: hidden;
+      transition: height 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     .slideshow-track {
       display: flex;
@@ -1010,7 +1011,6 @@
     }
     .slide {
       min-width: 100%;
-      aspect-ratio: 16/9;
       overflow: hidden;
       position: relative;
     }
@@ -1034,9 +1034,8 @@
       text-transform: uppercase;
     }
     .slide img {
-      width: 100%; height: 100%;
-      object-fit: contain;
-      background: #0a0a0a;
+      width: 100%;
+      height: auto;
       display: block;
     }
     .slide-btn {
@@ -1533,10 +1532,23 @@
           d.classList.toggle('active', i === current));
       }
 
+      function syncHeight() {
+        const outer = track.parentElement;
+        const img = slides[current].querySelector('img');
+        function apply() {
+          requestAnimationFrame(() => {
+            outer.style.height = slides[current].scrollHeight + 'px';
+          });
+        }
+        if (img && img.complete && img.naturalHeight > 0) apply();
+        else if (img) img.addEventListener('load', apply, { once: true });
+      }
+
       function goTo(index) {
         current = (index + slides.length) % slides.length;
         track.style.transform = 'translateX(-' + (current * 100) + '%)';
         updateDots();
+        syncHeight();
       }
 
       function resetTimer() {
@@ -1549,6 +1561,10 @@
 
       buildDots();
       resetTimer();
+      // Set initial height once first image loads
+      const firstImg = slides[0].querySelector('img');
+      if (firstImg && firstImg.complete) syncHeight();
+      else if (firstImg) firstImg.addEventListener('load', syncHeight);
     })();
 
     /* ------ Scroll-to-Top Button ------ */
