@@ -3,7 +3,37 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, phone, email, vehicleYear, vehicleMake, vehicleModel, service, preferredDate, preferredTime, issue } = req.body;
+  const { name, phone, email, vehicleYear, vehicleMake, vehicleModel, service, preferredDate, preferredTime, issue, _gotcha } = req.body;
+
+  // Honeypot: bots fill in hidden fields, real users don't
+  if (_gotcha) {
+    return res.status(200).json({ success: true });
+  }
+
+  // Validate required fields
+  if (!name || !phone || !vehicleYear || !vehicleMake || !vehicleModel || !service) {
+    return res.status(400).json({ error: 'Name, phone, vehicle info, and service are required.' });
+  }
+
+  // Validate field lengths
+  if (
+    name.length > 100 ||
+    phone.length > 20 ||
+    vehicleMake.length > 50 ||
+    vehicleModel.length > 50 ||
+    (issue && issue.length > 2000)
+  ) {
+    return res.status(400).json({ error: 'One or more fields exceed maximum length.' });
+  }
+
+  // Strip HTML tags to prevent injection
+  const clean = (str) => str ? str.replace(/<[^>]*>/g, '').trim() : '';
+  const safeName    = clean(name);
+  const safePhone   = clean(phone);
+  const safeMake    = clean(vehicleMake);
+  const safeModel   = clean(vehicleModel);
+  const safeService = clean(service);
+  const safeIssue   = clean(issue);
 
   try {
     // 1. Send full email to Gmail via Formspree
@@ -11,15 +41,15 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        name,
-        phone,
+        name: safeName,
+        phone: safePhone,
         email,
-        vehicle: `${vehicleYear} ${vehicleMake} ${vehicleModel}`,
-        service,
+        vehicle: `${vehicleYear} ${safeMake} ${safeModel}`,
+        service: safeService,
         preferredDate,
         preferredTime,
-        issue,
-        _subject: `Appointment Request: ${name} — ${service}`
+        issue: safeIssue,
+        _subject: `Appointment Request: ${safeName} — ${safeService}`
       })
     });
 
@@ -31,7 +61,7 @@ export default async function handler(req, res) {
         'Title': 'New Appointment - The Tire Boys',
         'Priority': 'high'
       },
-      body: `${name} | ${phone} | ${vehicleYear} ${vehicleMake} ${vehicleModel} | ${service} | ${preferredDate} ${preferredTime}`
+      body: `${safeName} | ${safePhone} | ${vehicleYear} ${safeMake} ${safeModel} | ${safeService} | ${preferredDate} ${preferredTime}`
     });
 
     return res.status(200).json({ success: true });

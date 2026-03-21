@@ -16,14 +16,14 @@
   <meta name="description" content="Schedule your auto repair appointment with The Tire Boys in Turlock, CA. Oil changes, tires, brakes, AC, engine diagnostics, and more. Walk-ins also welcome." />
   <meta name="keywords" content="book appointment auto repair Turlock CA, schedule oil change Turlock, tire appointment Turlock, The Tire Boys appointment" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://the-tire-boys.vercel.app/appointment.html" />
+  <link rel="canonical" href="https://www.thetireboys.com/appointment.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Book an Appointment | The Tire Boys | Turlock, CA" />
   <meta property="og:description" content="Schedule your auto repair appointment with The Tire Boys in Turlock, CA. Walk-ins also welcome." />
-  <meta property="og:url" content="https://the-tire-boys.vercel.app/appointment.html" />
-  <meta property="og:image" content="https://the-tire-boys.vercel.app/og-image.svg" />
+  <meta property="og:url" content="https://www.thetireboys.com/appointment.html" />
+  <meta property="og:image" content="https://www.thetireboys.com/og-image.svg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
@@ -871,6 +871,8 @@
       <p class="form-sub">Tell us about your vehicle and when you'd like to come in.</p>
 
       <form id="appointment-form">
+        <!-- Honeypot: hidden from real users, bots fill it in and get silently rejected -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
         <!-- Row 1: Name & Phone -->
         <div class="form-row">
