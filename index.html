@@ -1404,25 +1404,33 @@
         background: rgba(30,30,30,0.65);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
-        padding: 4px 12px 6px;
+        padding: 4px 14px 5px;
         border-radius: 8px;
         text-align: center;
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
-      .welcome-tag { font-size: 0.7rem; margin-bottom: 2px; }
-      .welcome-title { font-size: clamp(1.8rem, 9vw, 3rem); line-height: 1; }
-      /* Push subtitle to bottom with its own grey box */
+      .welcome-tag { font-size: 0.7rem; margin-bottom: 0; line-height: 1.4; }
+      .welcome-title { font-size: clamp(1.8rem, 9vw, 3rem); line-height: 1; margin: 0; }
+      /* Pin subtitle near bottom of image */
       .welcome-sub {
-        font-size: 1rem;
-        margin-top: auto;
-        margin-bottom: 4px;
+        position: absolute;
+        bottom: 36px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        max-width: 88%;
+        font-size: 0.9rem;
+        text-align: center;
         background: rgba(30,30,30,0.65);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
-        padding: 6px 12px;
+        padding: 5px 12px;
         border-radius: 8px;
+        margin: 0;
       }
-      .scroll-hint { margin-top: 6px; }
+      .scroll-hint { display: none; }
 
       .hero { padding: 80px 20px 70px; }
       .hero-badge { gap: 24px; }
@@ -1527,9 +1535,9 @@
     <div class="welcome-content">
       <div class="welcome-title-group">
         <span class="welcome-tag">Welcome to</span>
-        <h2 class="welcome-title">THE TIRE <span>BOYS</span></h2>
+        <h2 class="welcome-title">THE <span>TIRE</span> BOYS</h2>
       </div>
-      <p class="welcome-sub">Turlock&rsquo;s trusted auto repair &amp; tire shop &mdash; serving our community for over 20 years.</p>
+      <p class="welcome-sub">Turlock&rsquo;s trusted auto repair &amp; tire shop<br>serving our community for over 20 years.</p>
       <div class="scroll-hint">
         <span>Scroll to explore</span>
         <i class="fa-solid fa-chevron-down"></i>
