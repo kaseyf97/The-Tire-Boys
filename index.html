@@ -14,7 +14,7 @@
   <!-- Primary SEO -->
   <title>The Tire Boys | Auto Repair &amp; Tire Shop | Turlock, CA</title>
   <meta name="description" content="The Tire Boys — Turlock's trusted full-service auto repair shop. Oil changes, tires, brakes, AC, engine diagnostics, battery, transmission, and more. Call 209-250-2320." />
-  <meta name="keywords" content="auto repair Turlock CA, tire shop Turlock, oil change Turlock, brake repair Turlock, The Tire Boys, mechanic Turlock California, engine diagnostics Turlock" />
+  <meta name="keywords" content="auto repair Turlock CA, tire shop Turlock, oil change Turlock, brake repair Turlock, The Tire Boys, mechanic Turlock California, engine diagnostics Turlock, auto repair Denair CA, tire shop Hilmar CA, mechanic Hughson CA" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://the-tire-boys.vercel.app/" />
 
@@ -66,6 +66,7 @@
       }
     ],
     "priceRange": "$$",
+    "areaServed": ["Turlock, CA", "Modesto, CA", "Ceres, CA", "Denair, CA", "Hilmar, CA", "Hughson, CA"],
     "sameAs": [
       "https://www.google.com/maps/place/Tire+Boys+%26+Automotive+Repair/@37.492607,-120.8430968,17z/data=!3m1!4b1!4m6!3m5!1s0x809107ffe1927ccf:0x10e172cc97e4a02e!8m2!3d37.492607!4d-120.8430968!16s%2Fg%2F11gxmv3pxw"
     ]
@@ -96,7 +97,7 @@
       --light:  #f5f5f5;
       --white:  #ffffff;
       --text:   #333333;
-      --muted:  #888888;
+      --muted:  #767676;
       --border: #e0e0e0;
       --font-display: 'Bebas Neue', sans-serif;
       --font-body:    'Inter', sans-serif;
@@ -1241,6 +1242,16 @@
       font-size: 1.1rem;
       font-weight: 700;
     }
+    .form-error {
+      display: none;
+      background: #fff0f0;
+      border-left: 3px solid var(--red);
+      padding: 0.75rem 1rem;
+      border-radius: 0 4px 4px 0;
+      color: #990000;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
     @media (max-width: 600px) {
       .contact-form-wrap { padding: 28px 18px; }
       .form-row { grid-template-columns: 1fr; }
@@ -1478,9 +1489,23 @@
       .hero-actions { flex-direction: column; align-items: center; justify-content: center; }
       .btn-primary, .btn-outline { width: 100%; max-width: 320px; justify-content: center; }
     }
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--red);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 6px 6px;
+      font-weight: 700;
+      z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- ============================================================
        ANNOUNCEMENT BAR
@@ -1561,7 +1586,7 @@
   <!-- ============================================================
        HERO
   ============================================================ -->
-  <section class="hero" aria-labelledby="hero-heading">
+  <section class="hero" id="main-content" aria-labelledby="hero-heading">
     <div class="hero-inner">
     <div class="hero-content">
       <div class="hero-eyebrow">Turlock&rsquo;s Trusted Auto Repair</div>
@@ -2004,6 +2029,7 @@
 
         <button type="submit" class="form-submit-btn">Send Message &rarr;</button>
         <div class="form-success" id="form-success"><i class="fa-solid fa-circle-check"></i> Message sent! We'll be in touch soon.</div>
+        <div class="form-error" id="form-error"><i class="fa-solid fa-circle-exclamation"></i> Something went wrong. Please try again or call us directly.</div>
       </form>
     </div>
 
@@ -2068,7 +2094,7 @@
 
       <div class="footer-bottom">
         <p>&copy; 2026 <span>The Tire Boys</span>. All Rights Reserved. &nbsp;|&nbsp; Turlock, CA</p>
-        <p>Serving Turlock, Modesto, Ceres &amp; the Central Valley</p>
+        <p>Serving Turlock, Modesto, Ceres, Denair, Hilmar, Hughson &amp; the Central Valley</p>
       </div>
     </div>
   </footer>
@@ -2240,6 +2266,7 @@
     /* ------ Contact Form Submission ------ */
     const contactForm = document.getElementById('contact-form');
     const formSuccess = document.getElementById('form-success');
+    const formError = document.getElementById('form-error');
 
     function cfClearError(el) {
       el.classList.remove('error');
@@ -2311,10 +2338,12 @@
           } else {
             btn.textContent = 'Error — Try Again';
             btn.disabled = false;
+            formError.style.display = 'block';
           }
         } catch {
           btn.textContent = 'Error — Try Again';
           btn.disabled = false;
+          formError.style.display = 'block';
         }
       });
     }
