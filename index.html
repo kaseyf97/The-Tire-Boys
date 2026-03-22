@@ -16,14 +16,14 @@
   <meta name="description" content="The Tire Boys — Turlock's trusted full-service auto repair shop. Oil changes, tires, brakes, AC, engine diagnostics, battery, transmission, and more. Call 209-250-2320." />
   <meta name="keywords" content="auto repair Turlock CA, tire shop Turlock, oil change Turlock, brake repair Turlock, The Tire Boys, mechanic Turlock California, engine diagnostics Turlock" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.thetireboys.com/" />
+  <link rel="canonical" href="https://the-tire-boys.vercel.app/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="The Tire Boys | Auto Repair &amp; Tire Shop | Turlock, CA" />
   <meta property="og:description" content="Full-service auto repair in Turlock, CA. Tires, oil changes, brakes, AC, diagnostics &amp; more. Call 209-250-2320." />
-  <meta property="og:url" content="https://www.thetireboys.com/" />
-  <meta property="og:image" content="https://www.thetireboys.com/og-image.svg" />
+  <meta property="og:url" content="https://the-tire-boys.vercel.app/" />
+  <meta property="og:image" content="https://the-tire-boys.vercel.app/og-image.svg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
@@ -32,7 +32,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="The Tire Boys | Auto Repair &amp; Tire Shop | Turlock, CA" />
   <meta name="twitter:description" content="Full-service auto repair in Turlock, CA. Tires, oil changes, brakes, AC, diagnostics &amp; more. Call 209-250-2320." />
-  <meta name="twitter:image" content="https://www.thetireboys.com/og-image.svg" />
+  <meta name="twitter:image" content="https://the-tire-boys.vercel.app/og-image.svg" />
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -40,8 +40,8 @@
     "@context": "https://schema.org",
     "@type": "AutoRepair",
     "name": "The Tire Boys",
-    "image": "https://www.thetireboys.com/og-image.svg",
-    "url": "https://www.thetireboys.com/",
+    "image": "https://the-tire-boys.vercel.app/og-image.svg",
+    "url": "https://the-tire-boys.vercel.app/",
     "telephone": "+12092502320",
     "address": {
       "@type": "PostalAddress",
@@ -345,7 +345,7 @@
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
-      padding: 6px;
+      padding: 11px 8px;
       border: none;
       background: none;
       z-index: 20;
@@ -1222,6 +1222,17 @@
       transition: background var(--transition), transform 0.15s;
     }
     .form-submit-btn:hover { background: #a50000; transform: translateY(-1px); }
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: #CC0000;
+      box-shadow: 0 0 0 3px rgba(204,0,0,0.2);
+    }
+    .form-error-msg {
+      font-size: 0.78rem;
+      color: #ff5555;
+      margin-top: 2px;
+    }
     .form-success {
       display: none;
       text-align: center;
@@ -1264,7 +1275,7 @@
       max-width: 300px;
     }
     .footer-col h5 {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -2229,9 +2240,59 @@
     /* ------ Contact Form Submission ------ */
     const contactForm = document.getElementById('contact-form');
     const formSuccess = document.getElementById('form-success');
+
+    function cfClearError(el) {
+      el.classList.remove('error');
+      const msg = el.parentElement.querySelector('.form-error-msg');
+      if (msg) msg.remove();
+    }
+    function cfShowError(el, message) {
+      el.classList.add('error');
+      // reuse existing msg element so it updates if error type changes
+      let msg = el.parentElement.querySelector('.form-error-msg');
+      if (!msg) {
+        msg = document.createElement('span');
+        msg.className = 'form-error-msg';
+        el.parentElement.appendChild(msg);
+      }
+      msg.textContent = message;
+    }
+    function isValidPhone(val) {
+      // strip formatting, require at least 7 actual digits
+      return val.replace(/\D/g, '').length >= 7;
+    }
+    function validateContactForm() {
+      let valid = true;
+      const required = [
+        { id: 'cf-name',   msg: 'Name is required' },
+        { id: 'cf-phone',  msg: 'Phone number is required', phone: true },
+        { id: 'cf-reason', msg: 'Please select a reason' },
+      ];
+      required.forEach(({ id, msg, phone }) => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          cfShowError(el, msg); valid = false;
+        } else if (phone && !isValidPhone(el.value)) {
+          cfShowError(el, 'Please enter a valid phone number'); valid = false;
+        } else {
+          cfClearError(el);
+        }
+      });
+      return valid;
+    }
+
     if (contactForm) {
+      ['cf-name', 'cf-phone', 'cf-reason'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return; // null-safety: skip if field not found
+        // selects don't fire 'input', only 'change'; text/tel use 'input' for real-time feel
+        const evt = el.tagName === 'SELECT' ? 'change' : 'input';
+        el.addEventListener(evt, function() { cfClearError(this); });
+      });
+
       contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
+        if (!validateContactForm()) return;
         const btn = contactForm.querySelector('.form-submit-btn');
         btn.textContent = 'Sending…';
         btn.disabled = true;

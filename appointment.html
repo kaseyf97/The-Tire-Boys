@@ -16,14 +16,14 @@
   <meta name="description" content="Schedule your auto repair appointment with The Tire Boys in Turlock, CA. Oil changes, tires, brakes, AC, engine diagnostics, and more. Walk-ins also welcome." />
   <meta name="keywords" content="book appointment auto repair Turlock CA, schedule oil change Turlock, tire appointment Turlock, The Tire Boys appointment" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.thetireboys.com/appointment.html" />
+  <link rel="canonical" href="https://the-tire-boys.vercel.app/appointment.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Book an Appointment | The Tire Boys | Turlock, CA" />
   <meta property="og:description" content="Schedule your auto repair appointment with The Tire Boys in Turlock, CA. Walk-ins also welcome." />
-  <meta property="og:url" content="https://www.thetireboys.com/appointment.html" />
-  <meta property="og:image" content="https://www.thetireboys.com/og-image.svg" />
+  <meta property="og:url" content="https://the-tire-boys.vercel.app/appointment.html" />
+  <meta property="og:image" content="https://the-tire-boys.vercel.app/og-image.svg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_US" />
@@ -301,7 +301,7 @@
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
-      padding: 6px;
+      padding: 11px 8px;
       border: none;
       background: none;
       z-index: 20;
@@ -523,6 +523,17 @@
       resize: vertical;
       min-height: 110px;
     }
+    .form-group input.error,
+    .form-group select.error,
+    .form-group textarea.error {
+      border-color: #CC0000;
+      box-shadow: 0 0 0 3px rgba(204,0,0,0.2);
+    }
+    .form-error-msg {
+      font-size: 0.78rem;
+      color: #ff5555;
+      margin-top: 2px;
+    }
 
     /* Walk-in disclaimer */
     .disclaimer-box {
@@ -696,7 +707,7 @@
       max-width: 300px;
     }
     .footer-col h5 {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -1136,13 +1147,68 @@
     const dateInput = document.getElementById('appt-date');
     dateInput.min = new Date().toISOString().split('T')[0];
 
+    /* ------ Form Validation ------ */
+    function afClearError(el) {
+      el.classList.remove('error');
+      const msg = el.parentElement.querySelector('.form-error-msg');
+      if (msg) msg.remove();
+    }
+    function afShowError(el, message) {
+      el.classList.add('error');
+      // reuse existing msg element so it updates if error type changes
+      let msg = el.parentElement.querySelector('.form-error-msg');
+      if (!msg) {
+        msg = document.createElement('span');
+        msg.className = 'form-error-msg';
+        el.parentElement.appendChild(msg);
+      }
+      msg.textContent = message;
+    }
+    function isValidPhone(val) {
+      // strip formatting, require at least 7 actual digits
+      return val.replace(/\D/g, '').length >= 7;
+    }
+    function validateAppointmentForm() {
+      let valid = true;
+      const required = [
+        { id: 'appt-name',  msg: 'Name is required' },
+        { id: 'appt-phone', msg: 'Phone number is required', phone: true },
+        { id: 'appt-year',  msg: 'Please select a vehicle year' },
+        { id: 'appt-make',  msg: 'Vehicle make is required' },
+        { id: 'appt-model', msg: 'Vehicle model is required' },
+        { id: 'appt-service', msg: 'Please select a service' },
+        { id: 'appt-date',  msg: 'Please select a preferred date' },
+        { id: 'appt-time',  msg: 'Please select a preferred time' },
+      ];
+      required.forEach(({ id, msg, phone }) => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          afShowError(el, msg); valid = false;
+        } else if (phone && !isValidPhone(el.value)) {
+          afShowError(el, 'Please enter a valid phone number'); valid = false;
+        } else {
+          afClearError(el);
+        }
+      });
+      return valid;
+    }
+
     /* ------ Form Submission ------ */
     const form = document.getElementById('appointment-form');
     const submitBtn = form.querySelector('.form-submit-btn');
     const successMsg = document.getElementById('form-success');
 
+    ['appt-name','appt-phone','appt-year','appt-make','appt-model','appt-service','appt-date','appt-time'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return; // null-safety: skip if field not found
+      // selects/date don't fire 'input' reliably; text/tel use 'input' for real-time feel
+      const evt = (el.tagName === 'SELECT' || el.type === 'date') ? 'change' : 'input';
+      el.addEventListener(evt, function() { afClearError(this); });
+    });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!validateAppointmentForm()) return;
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending…';
 
