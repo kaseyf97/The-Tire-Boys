@@ -1584,15 +1584,25 @@
       .emergency-cta-btns { flex-direction: column; }
       .emergency-cta-btns .btn-white { width: 100%; justify-content: center; }
 
-      /* Mobile: use fixed background like Our Family page */
+      /* Mobile: use img tag instead of CSS background (renders correctly) */
       .welcome-screen {
-        background: url('images/team.jpg') center 10% / cover fixed no-repeat;
-        height: 100vh;
+        background: none;
+        height: 65vh;
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
+        overflow: hidden;
       }
-      .welcome-bg-img { display: none; }
+      .welcome-bg-img {
+        display: block;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 60%;
+      }
       .welcome-overlay {
         position: absolute;
         inset: 0;
