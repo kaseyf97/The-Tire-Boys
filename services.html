@@ -624,6 +624,26 @@
       background: rgba(204,0,0,0.16);
     }
 
+    /* Image placeholder for service detail sections */
+    .service-detail-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #f0f0f0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--red);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .service-detail-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     /* ============================================================
        CTA SECTION
     ============================================================ */
@@ -945,6 +965,7 @@
       <a href="#transmission" class="qnav-pill">Transmission</a>
       <a href="#cooling" class="qnav-pill">Cooling System</a>
       <a href="#suspension" class="qnav-pill">Suspension</a>
+      <a href="#alignment" class="qnav-pill">Alignment</a>
     </div>
   </div>
 
@@ -959,6 +980,9 @@
           <h2 class="service-detail-title">Oil Changes</h2>
           <p class="service-detail-sub">Keep Your Engine Running Strong</p>
         </div>
+      </div>
+      <div class="service-detail-img">
+        <i class="fa-solid fa-oil-can"></i>
       </div>
       <p class="service-detail-desc">
         Regular oil changes are the single most important thing you can do for your vehicle's longevity.
@@ -1003,6 +1027,9 @@
           <p class="service-detail-sub">Sales, Mounting &amp; Rotation</p>
         </div>
       </div>
+      <div class="service-detail-img">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="currentColor"/><line x1="12" y1="6.5" x2="12" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="14" x2="12" y2="17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6.5" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14" y1="12" x2="17.5" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
       <p class="service-detail-desc">
         Your tires are the only thing between your vehicle and the road — so we don't cut corners.
         The Tire Boys carries a wide selection of tires for every vehicle and budget. We'll help you
@@ -1046,6 +1073,9 @@
           <p class="service-detail-sub">Stop Safely, Every Time</p>
         </div>
       </div>
+      <div class="service-detail-img">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><circle cx="13" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="13" cy="12" r="2.5" fill="currentColor"/><rect x="1.5" y="7.5" width="4.5" height="9" rx="1.2" fill="currentColor"/><rect x="0.5" y="6.5" width="2" height="11" rx="0.8" fill="currentColor"/></svg>
+      </div>
       <p class="service-detail-desc">
         Brakes are your vehicle's most critical safety system. If you're hearing squealing, grinding,
         or your car is pulling to one side, don't wait — bring it in. Our technicians will inspect
@@ -1078,6 +1108,9 @@
           <h2 class="service-detail-title">AC &amp; Heating</h2>
           <p class="service-detail-sub">Stay Comfortable Year-Round</p>
         </div>
+      </div>
+      <div class="service-detail-img">
+        <i class="fa-solid fa-snowflake"></i>
       </div>
       <p class="service-detail-desc">
         California summers are no joke — and neither are cold winter mornings. Whether your AC is
@@ -1112,6 +1145,9 @@
           <p class="service-detail-sub">Find the Problem Fast</p>
         </div>
       </div>
+      <div class="service-detail-img">
+        <i class="fa-solid fa-plug"></i>
+      </div>
       <p class="service-detail-desc">
         That check engine light can mean a dozen different things. Our diagnostic equipment plugs
         directly into your vehicle's computer to read fault codes and pinpoint the issue — no
@@ -1144,6 +1180,9 @@
           <h2 class="service-detail-title">Battery Service</h2>
           <p class="service-detail-sub">Don't Get Stranded</p>
         </div>
+      </div>
+      <div class="service-detail-img">
+        <i class="fa-solid fa-battery-full"></i>
       </div>
       <p class="service-detail-desc">
         A dead battery is never convenient. We'll test your battery and charging system to catch
@@ -1178,6 +1217,9 @@
           <p class="service-detail-sub">Smooth Shifts, Long Life</p>
         </div>
       </div>
+      <div class="service-detail-img">
+        <i class="fa-solid fa-gears"></i>
+      </div>
       <p class="service-detail-desc">
         Your transmission is one of the most complex — and expensive — parts of your vehicle.
         Regular fluid changes and inspections go a long way toward preventing major repairs. We
@@ -1210,6 +1252,9 @@
           <h2 class="service-detail-title">Cooling System</h2>
           <p class="service-detail-sub">Prevent Overheating Before It Happens</p>
         </div>
+      </div>
+      <div class="service-detail-img">
+        <i class="fa-solid fa-temperature-half"></i>
       </div>
       <p class="service-detail-desc">
         An overheating engine can cause serious — and expensive — damage in minutes. We'll flush
@@ -1259,6 +1304,9 @@
           <p class="service-detail-sub">Smooth Ride, Safe Handling</p>
         </div>
       </div>
+      <div class="service-detail-img">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><rect x="8" y="1" width="8" height="2.5" rx="1" fill="currentColor"/><rect x="10.5" y="3.5" width="3" height="6" rx="0.8" fill="currentColor"/><path d="M7 9.5 Q9 9.5 9 11 Q9 12.5 12 12.5 Q15 12.5 15 11 Q15 9.5 17 9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M7 12.5 Q9 12.5 9 14 Q9 15.5 12 15.5 Q15 15.5 15 14 Q15 12.5 17 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="8.5" y="15.5" width="7" height="6" rx="1.5" fill="currentColor"/><rect x="8" y="20.5" width="8" height="2.5" rx="1" fill="currentColor"/></svg>
+      </div>
       <p class="service-detail-desc">
         If your car is bouncing, pulling, or wearing tires unevenly, your suspension may be the
         culprit. A worn suspension affects both comfort and safety. We inspect the full system —
@@ -1274,6 +1322,42 @@
         <li><i class="fa-solid fa-circle-check"></i> Alignment Check</li>
         <li><i class="fa-solid fa-circle-check"></i> Spring Replacement</li>
         <li><i class="fa-solid fa-circle-check"></i> Steering System Inspection</li>
+      </ul>
+      <a href="tel:2092502320" class="btn-primary" style="display:inline-flex;">
+        <i class="fa-solid fa-phone"></i> Call to Schedule
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10. ALIGNMENT
+  ============================================================ -->
+  <section class="service-detail" id="alignment" style="scroll-margin-top: 130px;">
+    <div class="service-detail-card fade-up">
+      <div class="service-detail-header">
+        <div class="service-icon-wrap"><i class="fa-solid fa-road"></i></div>
+        <div>
+          <h2 class="service-detail-title">Alignment</h2>
+          <p class="service-detail-sub">Straight Steering, Even Wear</p>
+        </div>
+      </div>
+      <div class="service-detail-img">
+        <i class="fa-solid fa-road"></i>
+      </div>
+      <p class="service-detail-desc">
+        Misaligned wheels cause uneven tire wear, steering pull, and poor handling — costing you
+        money and safety. At The Tire Boys, we offer precision two-wheel and four-wheel alignment
+        using modern equipment to get your vehicle tracking straight and driving smooth again.
+      </p>
+      <p class="service-pricing"><strong>Pricing:</strong> Call for pricing</p>
+      <p class="service-included-label">What's Included</p>
+      <ul class="service-checklist">
+        <li><i class="fa-solid fa-circle-check"></i> Two-Wheel Alignment</li>
+        <li><i class="fa-solid fa-circle-check"></i> Four-Wheel Alignment</li>
+        <li><i class="fa-solid fa-circle-check"></i> Steering Angle Adjustment</li>
+        <li><i class="fa-solid fa-circle-check"></i> Camber &amp; Toe Correction</li>
+        <li><i class="fa-solid fa-circle-check"></i> Tire Wear Inspection</li>
+        <li><i class="fa-solid fa-circle-check"></i> Test Drive Verification</li>
       </ul>
       <a href="tel:2092502320" class="btn-primary" style="display:inline-flex;">
         <i class="fa-solid fa-phone"></i> Call to Schedule
@@ -1331,6 +1415,7 @@
             <li><a href="services.html#battery">Battery Service</a></li>
             <li><a href="services.html#transmission">Transmission</a></li>
             <li><a href="services.html#suspension">Suspension</a></li>
+            <li><a href="services.html#alignment">Alignment</a></li>
           </ul>
         </div>
 

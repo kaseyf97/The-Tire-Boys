@@ -729,53 +729,254 @@
     }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 24px;
       max-width: var(--max-w);
       margin: 0 auto;
     }
+
+    /* --- Service Card (vertical square tile) --- */
     .service-card {
+      position: relative;
       background: var(--white);
       border: 1px solid var(--border);
-      border-left: 4px solid var(--red);
-      border-radius: var(--radius);
-      padding: 30px 26px;
+      border-radius: 12px;
+      padding: 28px 20px 24px;
       display: flex;
-      align-items: flex-start;
-      gap: 20px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      cursor: pointer;
       transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      cursor: default;
+      border: none;
+      font-family: inherit;
+      color: inherit;
+      appearance: none;
+      -webkit-appearance: none;
     }
     .service-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       box-shadow: var(--shadow-lg);
-      border-left-color: var(--red-dk);
     }
-    .service-icon-wrap {
-      width: 52px; height: 52px;
-      background: rgba(204,0,0,0.08);
-      border-radius: var(--radius);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-      flex-shrink: 0;
-      transition: background var(--transition);
+    .service-card:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 2px;
     }
-    .service-card:hover .service-icon-wrap {
-      background: rgba(204,0,0,0.16);
+
+    /* Number badge — top-left red circle */
+    .service-number {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 30px;
+      height: 30px;
+      background: var(--red);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      line-height: 1;
     }
-    .service-body h3 {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 700;
+
+    /* Image / icon placeholder area */
+    .service-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      background: #f5f5f5;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      color: var(--red);
+      overflow: hidden;
+    }
+    .service-img-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .service-card:hover .service-img-placeholder {
+      background: #eee;
+    }
+
+    /* Service name */
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
       color: var(--black);
-      letter-spacing: 0.03em;
-      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+      margin: 0;
+      line-height: 1.2;
     }
-    .service-body p {
-      font-size: 0.88rem;
+
+    /* Teaser price */
+    .service-teaser {
+      font-size: 0.85rem;
       color: var(--muted);
-      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ============================================================
+       SERVICE MODAL
+    ============================================================ */
+    .service-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .service-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .service-modal {
+      background: var(--white);
+      border-radius: 16px;
+      max-width: 520px;
+      width: 100%;
+      padding: 40px 36px 36px;
+      position: relative;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .service-modal-overlay.active .service-modal {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #f0f0f0;
+      color: var(--black);
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition), color var(--transition);
+      line-height: 1;
+    }
+    .modal-close:hover {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .modal-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--red);
+      color: var(--white);
+      border-radius: 50%;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+
+    .modal-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #f5f5f5;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      color: var(--red);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .modal-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--black);
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+    }
+
+    .modal-description {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .modal-price {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding: 14px 18px;
+      background: #fafafa;
+      border-radius: 8px;
+      border-left: 4px solid var(--red);
+    }
+    .price-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+    .price-value {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--black);
+      letter-spacing: 0.02em;
+    }
+
+    .modal-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background var(--transition);
+      width: 100%;
+    }
+    .modal-cta:hover {
+      background: var(--red-dk);
     }
 
     /* ============================================================
@@ -1462,7 +1663,10 @@
       }
 
       .services { padding: 70px 20px; }
-      .services-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .service-modal { padding: 30px 24px 28px; }
+      .modal-title { font-size: 1.5rem; }
 
       .why-us { padding: 70px 20px; }
       .testimonials { padding: 70px 20px; }
@@ -1480,6 +1684,7 @@
       .trust-item { font-size: 0.73rem; }
       .hero-actions { flex-direction: column; align-items: center; justify-content: center; }
       .btn-primary, .btn-outline { width: 100%; max-width: 320px; justify-content: center; }
+      .services-grid { grid-template-columns: 1fr; }
     }
     .skip-link {
       position: absolute;
@@ -1675,16 +1880,18 @@
 
     <div class="services-grid">
 
-      <div class="service-card fade-up">
-        <div class="service-icon-wrap"><i class="fa-solid fa-oil-can"></i></div>
-        <div class="service-body">
-          <h3>Oil Changes</h3>
-          <p>Conventional, synthetic &amp; high-mileage oil changes with multi-point inspection included.</p>
+      <button class="service-card fade-up" data-service="0" aria-haspopup="dialog">
+        <span class="service-number">01</span>
+        <div class="service-img-placeholder">
+          <i class="fa-solid fa-oil-can"></i>
         </div>
-      </div>
+        <h3 class="service-name">Oil Changes</h3>
+        <p class="service-teaser">Starting at $39</p>
+      </button>
 
-      <div class="service-card fade-up">
-        <div class="service-icon-wrap">
+      <button class="service-card fade-up" data-service="1" aria-haspopup="dialog">
+        <span class="service-number">02</span>
+        <div class="service-img-placeholder">
           <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true">
             <circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="2"/>
             <circle cx="12" cy="12" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
@@ -1695,92 +1902,110 @@
             <line x1="14" y1="12" x2="17.5" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="service-body">
-          <h3>Tires</h3>
-          <p>Tire sales, mounting, balancing, rotation &amp; flat repairs. All brands available.</p>
-        </div>
-      </div>
+        <h3 class="service-name">Tires</h3>
+        <p class="service-teaser">Starting at $80</p>
+      </button>
 
-      <div class="service-card fade-up">
-        <div class="service-icon-wrap">
+      <button class="service-card fade-up" data-service="2" aria-haspopup="dialog">
+        <span class="service-number">03</span>
+        <div class="service-img-placeholder">
           <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true">
-            <!-- Rotor disc -->
             <circle cx="13" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
             <circle cx="13" cy="12" r="2.5" fill="currentColor"/>
-            <!-- Brake pad body -->
             <rect x="1.5" y="7.5" width="4.5" height="9" rx="1.2" fill="currentColor"/>
-            <!-- Backing plate -->
             <rect x="0.5" y="6.5" width="2" height="11" rx="0.8" fill="currentColor"/>
           </svg>
         </div>
-        <div class="service-body">
-          <h3>Brake Service</h3>
-          <p>Brake pad replacement, rotor resurfacing &amp; complete brake system inspections.</p>
-        </div>
-      </div>
+        <h3 class="service-name">Brake Service</h3>
+        <p class="service-teaser">Starting at $149</p>
+      </button>
 
-      <div class="service-card fade-up">
-        <div class="service-icon-wrap"><i class="fa-solid fa-snowflake"></i></div>
-        <div class="service-body">
-          <h3>AC &amp; Heating</h3>
-          <p>AC recharge, leak detection, heater core repairs &amp; climate control diagnostics.</p>
+      <button class="service-card fade-up" data-service="3" aria-haspopup="dialog">
+        <span class="service-number">04</span>
+        <div class="service-img-placeholder">
+          <i class="fa-solid fa-snowflake"></i>
         </div>
-      </div>
+        <h3 class="service-name">AC &amp; Heating</h3>
+        <p class="service-teaser">Starting at $89</p>
+      </button>
 
-      <div class="service-card fade-up">
-        <div class="service-icon-wrap"><i class="fa-solid fa-plug"></i></div>
-        <div class="service-body">
-          <h3>Engine Diagnostics</h3>
-          <p>Computer-based diagnostics for check engine lights, misfires &amp; performance issues.</p>
+      <button class="service-card fade-up" data-service="4" aria-haspopup="dialog">
+        <span class="service-number">05</span>
+        <div class="service-img-placeholder">
+          <i class="fa-solid fa-plug"></i>
         </div>
-      </div>
+        <h3 class="service-name">Engine Diagnostics</h3>
+        <p class="service-teaser">Starting at $49</p>
+      </button>
 
-      <div class="service-card fade-up">
-        <div class="service-icon-wrap"><i class="fa-solid fa-battery-full"></i></div>
-        <div class="service-body">
-          <h3>Battery Service</h3>
-          <p>Battery testing, replacement &amp; charging system inspection to prevent breakdowns.</p>
+      <button class="service-card fade-up" data-service="5" aria-haspopup="dialog">
+        <span class="service-number">06</span>
+        <div class="service-img-placeholder">
+          <i class="fa-solid fa-battery-full"></i>
         </div>
-      </div>
+        <h3 class="service-name">Battery Service</h3>
+        <p class="service-teaser">Starting at $29</p>
+      </button>
 
-      <div class="service-card fade-up">
-        <div class="service-icon-wrap"><i class="fa-solid fa-gears"></i></div>
-        <div class="service-body">
-          <h3>Transmission</h3>
-          <p>Fluid flushes, filter changes &amp; transmission repair for automatic &amp; manual vehicles.</p>
+      <button class="service-card fade-up" data-service="6" aria-haspopup="dialog">
+        <span class="service-number">07</span>
+        <div class="service-img-placeholder">
+          <i class="fa-solid fa-gears"></i>
         </div>
-      </div>
+        <h3 class="service-name">Transmission</h3>
+        <p class="service-teaser">Starting at $129</p>
+      </button>
 
-      <div class="service-card fade-up">
-        <div class="service-icon-wrap"><i class="fa-solid fa-temperature-half"></i></div>
-        <div class="service-body">
-          <h3>Cooling System</h3>
-          <p>Radiator flush, thermostat replacement &amp; coolant system pressure testing.</p>
+      <button class="service-card fade-up" data-service="7" aria-haspopup="dialog">
+        <span class="service-number">08</span>
+        <div class="service-img-placeholder">
+          <i class="fa-solid fa-temperature-half"></i>
         </div>
-      </div>
+        <h3 class="service-name">Cooling System</h3>
+        <p class="service-teaser">Starting at $89</p>
+      </button>
 
-      <div class="service-card fade-up">
-        <div class="service-icon-wrap">
+      <button class="service-card fade-up" data-service="8" aria-haspopup="dialog">
+        <span class="service-number">09</span>
+        <div class="service-img-placeholder">
           <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true">
-            <!-- Top mount -->
             <rect x="8" y="1" width="8" height="2.5" rx="1" fill="currentColor"/>
-            <!-- Piston rod -->
             <rect x="10.5" y="3.5" width="3" height="6" rx="0.8" fill="currentColor"/>
-            <!-- Spring coils -->
             <path d="M7 9.5 Q9 9.5 9 11 Q9 12.5 12 12.5 Q15 12.5 15 11 Q15 9.5 17 9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
             <path d="M7 12.5 Q9 12.5 9 14 Q9 15.5 12 15.5 Q15 15.5 15 14 Q15 12.5 17 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            <!-- Shock body (lower cylinder) -->
             <rect x="8.5" y="15.5" width="7" height="6" rx="1.5" fill="currentColor"/>
-            <!-- Bottom mount -->
             <rect x="8" y="20.5" width="8" height="2.5" rx="1" fill="currentColor"/>
           </svg>
         </div>
-        <div class="service-body">
-          <h3>Suspension</h3>
-          <p>Struts, shocks, ball joints, tie rods &amp; alignment for a smooth, safe ride.</p>
-        </div>
-      </div>
+        <h3 class="service-name">Suspension</h3>
+        <p class="service-teaser">Starting at $199</p>
+      </button>
 
+      <button class="service-card fade-up" data-service="9" aria-haspopup="dialog">
+        <span class="service-number">10</span>
+        <div class="service-img-placeholder">
+          <i class="fa-solid fa-road"></i>
+        </div>
+        <h3 class="service-name">Alignment</h3>
+        <p class="service-teaser">Starting at $79</p>
+      </button>
+
+    </div>
+
+    <!-- Service Detail Modal -->
+    <div class="service-modal-overlay" id="serviceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+      <div class="service-modal">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <span class="modal-number" id="modalNumber"></span>
+        <div class="modal-img" id="modalImg"></div>
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <p class="modal-description" id="modalDesc"></p>
+        <div class="modal-price">
+          <span class="price-label">Price Range</span>
+          <span class="price-value" id="modalPrice"></span>
+        </div>
+        <a href="#contact" class="modal-cta" id="modalCta">Schedule Service</a>
+      </div>
     </div>
   </section>
 
@@ -2055,7 +2280,9 @@
             <li><a href="#services">Engine Diagnostics</a></li>
             <li><a href="#services">Battery Service</a></li>
             <li><a href="#services">Transmission</a></li>
+            <li><a href="#services">Cooling System</a></li>
             <li><a href="#services">Suspension</a></li>
+            <li><a href="#services">Alignment</a></li>
           </ul>
         </div>
 
@@ -2125,6 +2352,152 @@
     overlay.addEventListener('click', closeMenu);
     mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    /* ------ Service Modal ------ */
+    const services = [
+      {
+        name: 'Oil Changes',
+        icon: '<i class="fa-solid fa-oil-can"></i>',
+        teaser: 'Starting at $39',
+        price: '$39 – $89',
+        description: 'Conventional, synthetic & high-mileage oil changes with multi-point inspection included. We use top-quality filters and oil to keep your engine running smooth.'
+      },
+      {
+        name: 'Tires',
+        icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="currentColor"/><line x1="12" y1="6.5" x2="12" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="14" x2="12" y2="17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6.5" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14" y1="12" x2="17.5" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+        teaser: 'Starting at $80',
+        price: '$80 – $250+',
+        description: 'Tire sales, mounting, balancing, rotation & flat repairs. All major brands available at competitive prices.'
+      },
+      {
+        name: 'Brake Service',
+        icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><circle cx="13" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="13" cy="12" r="2.5" fill="currentColor"/><rect x="1.5" y="7.5" width="4.5" height="9" rx="1.2" fill="currentColor"/><rect x="0.5" y="6.5" width="2" height="11" rx="0.8" fill="currentColor"/></svg>',
+        teaser: 'Starting at $149',
+        price: '$149 – $399',
+        description: 'Brake pad replacement, rotor resurfacing & complete brake system inspections. Your safety is our top priority.'
+      },
+      {
+        name: 'AC & Heating',
+        icon: '<i class="fa-solid fa-snowflake"></i>',
+        teaser: 'Starting at $89',
+        price: '$89 – $350',
+        description: 'AC recharge, leak detection, heater core repairs & climate control diagnostics to keep you comfortable year-round.'
+      },
+      {
+        name: 'Engine Diagnostics',
+        icon: '<i class="fa-solid fa-plug"></i>',
+        teaser: 'Starting at $49',
+        price: '$49 – $129',
+        description: 'Computer-based diagnostics for check engine lights, misfires & performance issues. We pinpoint the problem fast.'
+      },
+      {
+        name: 'Battery Service',
+        icon: '<i class="fa-solid fa-battery-full"></i>',
+        teaser: 'Starting at $29',
+        price: '$29 – $199',
+        description: 'Battery testing, replacement & charging system inspection to prevent unexpected breakdowns.'
+      },
+      {
+        name: 'Transmission',
+        icon: '<i class="fa-solid fa-gears"></i>',
+        teaser: 'Starting at $129',
+        price: '$129 – $500+',
+        description: 'Fluid flushes, filter changes & transmission repair for both automatic & manual vehicles.'
+      },
+      {
+        name: 'Cooling System',
+        icon: '<i class="fa-solid fa-temperature-half"></i>',
+        teaser: 'Starting at $89',
+        price: '$89 – $299',
+        description: 'Radiator flush, thermostat replacement & coolant system pressure testing to prevent overheating.'
+      },
+      {
+        name: 'Suspension',
+        icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><rect x="8" y="1" width="8" height="2.5" rx="1" fill="currentColor"/><rect x="10.5" y="3.5" width="3" height="6" rx="0.8" fill="currentColor"/><path d="M7 9.5 Q9 9.5 9 11 Q9 12.5 12 12.5 Q15 12.5 15 11 Q15 9.5 17 9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M7 12.5 Q9 12.5 9 14 Q9 15.5 12 15.5 Q15 15.5 15 14 Q15 12.5 17 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="8.5" y="15.5" width="7" height="6" rx="1.5" fill="currentColor"/><rect x="8" y="20.5" width="8" height="2.5" rx="1" fill="currentColor"/></svg>',
+        teaser: 'Starting at $199',
+        price: '$199 – $600+',
+        description: 'Struts, shocks, ball joints, tie rods & alignment services for a smooth, safe ride.'
+      },
+      {
+        name: 'Alignment',
+        icon: '<i class="fa-solid fa-road"></i>',
+        teaser: 'Starting at $79',
+        price: '$79 – $149',
+        description: 'Two-wheel & four-wheel alignment to correct steering pull, uneven tire wear & handling issues.'
+      }
+    ];
+
+    const serviceModalOverlay = document.getElementById('serviceModal');
+    const serviceModal = serviceModalOverlay.querySelector('.service-modal');
+    const modalCloseBtn = serviceModalOverlay.querySelector('.modal-close');
+    let lastFocusedCard = null;
+
+    function openServiceModal(index) {
+      const s = services[index];
+      if (!s) return;
+
+      // Fill modal content
+      document.getElementById('modalNumber').textContent = String(index + 1).padStart(2, '0');
+      document.getElementById('modalImg').innerHTML = s.icon;
+      document.getElementById('modalTitle').textContent = s.name;
+      document.getElementById('modalDesc').textContent = s.description;
+      document.getElementById('modalPrice').textContent = s.price;
+
+      // Show modal
+      serviceModalOverlay.removeAttribute('hidden');
+      // Small delay so CSS transition triggers
+      requestAnimationFrame(() => {
+        serviceModalOverlay.classList.add('active');
+      });
+      document.body.style.overflow = 'hidden';
+      modalCloseBtn.focus();
+    }
+
+    function closeServiceModal() {
+      serviceModalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      // Wait for opacity transition to finish, then hide
+      serviceModalOverlay.addEventListener('transitionend', function handler(e) {
+        if (e.propertyName !== 'opacity') return;
+        serviceModalOverlay.setAttribute('hidden', '');
+        serviceModalOverlay.removeEventListener('transitionend', handler);
+        if (lastFocusedCard) lastFocusedCard.focus();
+      });
+    }
+
+    // Event delegation on service cards
+    document.querySelector('.services-grid').addEventListener('click', (e) => {
+      const card = e.target.closest('.service-card');
+      if (!card) return;
+      lastFocusedCard = card;
+      openServiceModal(Number(card.dataset.service));
+    });
+
+    // Close handlers
+    modalCloseBtn.addEventListener('click', closeServiceModal);
+    serviceModalOverlay.addEventListener('click', (e) => {
+      if (e.target === serviceModalOverlay) closeServiceModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && serviceModalOverlay.classList.contains('active')) {
+        closeServiceModal();
+      }
+    });
+
+    // Focus trap inside modal
+    serviceModal.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const focusable = serviceModal.querySelectorAll('button, a[href]');
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
 
     /* ------ Scroll Animations (IntersectionObserver) ------ */
     const fadeEls = document.querySelectorAll('.fade-up');
