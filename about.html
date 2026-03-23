@@ -444,33 +444,43 @@
     ============================================================ */
     .page-hero {
       position: relative;
-      background: url('images/family-kid.jpg') center center / cover fixed no-repeat;
+      background: url('images/family-kid.jpg') center bottom / cover fixed no-repeat;
       overflow: hidden;
-      padding: 90px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 80vh;
       text-align: center;
     }
     .page-hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.55);
+      background: rgba(0,0,0,0.3);
       pointer-events: none;
     }
-    .page-hero::after {
-      content: '';
-      position: absolute;
-      top: -80px; left: 50%;
-      transform: translateX(-50%);
-      width: 700px; height: 500px;
-      background: radial-gradient(ellipse, rgba(204,0,0,0.2) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .page-hero-content {
+    .page-hero-top {
       position: relative;
       z-index: 2;
-      max-width: 780px;
-      margin: 0 auto;
+      background: rgba(30,30,30,0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      padding: 8px 14px 6px;
+      border-radius: 0 0 8px 8px;
+      text-align: center;
       animation: fadeUp 0.8s ease both;
+    }
+    .page-hero-bottom {
+      position: relative;
+      z-index: 2;
+      background: rgba(30,30,30,0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      padding: 6px 14px 8px;
+      border-radius: 8px 8px 0 0;
+      text-align: center;
+      max-width: 280px;
     }
     .page-hero-eyebrow {
       display: inline-flex;
@@ -483,25 +493,25 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      padding: 6px 16px;
+      padding: 4px 12px;
       border-radius: 100px;
-      margin-bottom: 28px;
+      margin-bottom: 4px;
     }
     .page-hero h1 {
       font-family: var(--font-display);
       font-size: clamp(2.8rem, 7vw, 5rem);
-      line-height: 0.98;
+      line-height: 0.95;
       letter-spacing: 0.02em;
       color: var(--white);
-      margin-bottom: 10px;
+      margin-bottom: 0;
     }
     .page-hero h1 span { color: var(--red); }
     .page-hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: #aaa;
-      max-width: 540px;
-      margin: 22px auto 0;
-      line-height: 1.65;
+      font-size: clamp(0.85rem, 2.5vw, 1rem);
+      color: rgba(255,255,255,0.85);
+      margin: 0;
+      line-height: 1.5;
+      text-wrap: balance;
     }
 
     /* ============================================================
@@ -875,6 +885,10 @@
       .footer-brand { grid-column: 1 / -1; }
     }
 
+    @media (min-width: 901px) {
+      .page-hero { background-position: center 30%; }
+    }
+
     @media (max-width: 900px) {
       .story-inner {
         grid-template-columns: 1fr;
@@ -892,7 +906,7 @@
       .header-phone .phone-label { display: none; }
       body { padding-bottom: 58px; }
 
-      .page-hero { padding: 70px 20px 60px; }
+      .page-hero { min-height: 420px; }
       .story { padding: 70px 20px; }
       .values { padding: 70px 20px; }
       .values-grid { grid-template-columns: 1fr; }
@@ -1160,13 +1174,12 @@
        PAGE HERO
   ============================================================ -->
   <section class="page-hero" id="main-content" aria-labelledby="about-heading">
-    <div class="page-hero-content">
+    <div class="page-hero-top">
       <div class="page-hero-eyebrow">Family Owned Since 2002</div>
       <h1 id="about-heading">Meet The <span>Tire</span> Boys</h1>
-      <p class="page-hero-sub">
-        A family business rooted in Turlock for 20+ years. Built on treating every
-        customer like one of our own.
-      </p>
+    </div>
+    <div class="page-hero-bottom">
+      <p class="page-hero-sub">A family business rooted in Turlock for 20+ years. Built on treating every customer like one of our own.</p>
     </div>
   </section>
 

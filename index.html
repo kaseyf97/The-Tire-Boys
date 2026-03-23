@@ -1383,23 +1383,15 @@
       .emergency-cta-btns { flex-direction: column; }
       .emergency-cta-btns .btn-white { width: 100%; justify-content: center; }
 
-      /* Mobile: stack image naturally in flow, text overlaid at bottom */
+      /* Mobile: use fixed background like Our Family page */
       .welcome-screen {
-        background-image: none;
-        background-color: var(--black);
-        height: auto;
-        min-height: unset;
-        display: block;
-        padding: 0;
+        background: url('images/team.jpg') center 10% / cover fixed no-repeat;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-      .welcome-bg-img {
-        display: block;
-        position: relative;
-        width: 100%;
-        height: auto;
-        z-index: 0;
-        filter: brightness(0.72);
-      }
+      .welcome-bg-img { display: none; }
       .welcome-overlay {
         position: absolute;
         inset: 0;
