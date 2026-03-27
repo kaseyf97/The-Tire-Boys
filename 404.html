@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#CC0000" />
+  <meta name="robots" content="noindex" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <title>404 — Page Not Found | The Tire Boys</title>
+  <meta name="description" content="Page not found. Return to The Tire Boys — Turlock's trusted auto repair shop." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Google Analytics GA4 — swap G-XXXXXXXXXX for your real Measurement ID -->
+  <!-- To get your ID: analytics.google.com → Admin → Data Streams → Web Stream → Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <style>
+    .not-found {
+      padding: 120px 20px;
+      text-align: center;
+      background: var(--white);
+    }
+    .not-found-code {
+      font-family: var(--font-display);
+      font-size: clamp(80px, 20vw, 180px);
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .not-found h1 {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 5vw, 42px);
+      color: var(--black);
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+    .not-found p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+    .not-found-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================================
+       ANNOUNCEMENT BAR
+  ============================================================ -->
+  <div class="announce-bar" role="banner">
+    <i class="fa-regular fa-calendar"></i> Open 7 Days a Week &nbsp;|&nbsp; Now Accepting Walk-Ins &amp; Same-Day Appointments — Call Us Today!
+    <a href="tel:2092502320">209-250-2320</a>
+  </div>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+
+      <a href="index.html" class="logo" aria-label="The Tire Boys — Home">
+        <span class="logo-top">The <span>Tire</span> Boys</span>
+        <span class="logo-sub">Turlock, CA &mdash; Full Service Auto</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">Our Family</a>
+        <a href="services.html">Services</a>
+      </nav>
+
+      <div class="header-cta">
+        <a href="appointment.html" class="btn-book">Book Appointment</a>
+        <a href="tel:2092502320" class="header-phone" aria-label="Call us at 209-250-2320">
+          <div class="phone-icon"><i class="fa-solid fa-phone"></i></div>
+          <span class="phone-label">209-250-2320</span>
+        </a>
+        <a href="tel:2092502320" class="btn-header">Call Now</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <nav class="mobile-drawer">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="about.html" class="mobile-link">Our Family</a>
+      <a href="services.html" class="mobile-link">Services</a>
+      <a href="tel:2092502320" class="mobile-call-btn"><i class="fa-solid fa-phone"></i> Call 209-250-2320</a>
+    </nav>
+  </div>
+
+  <!-- Sticky Book Appointment bar (mobile only) -->
+  <a href="appointment.html" class="mobile-book-bar">
+    <i class="fa-solid fa-calendar-check"></i> Book an Appointment
+  </a>
+
+  <!-- ============================================================
+       404 SECTION
+  ============================================================ -->
+  <main id="main-content">
+    <section class="not-found" aria-labelledby="not-found-heading">
+      <div class="not-found-code" aria-hidden="true">404</div>
+      <h1 id="not-found-heading">Page Not Found</h1>
+      <p>Looks like you took a wrong turn. Let&rsquo;s get you back on the road.</p>
+      <div class="not-found-actions">
+        <a href="/" class="btn btn-primary">Go Home</a>
+        <a href="/appointment.html" class="btn btn-outline">Book Appointment</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-top">The <span>Tire</span> Boys</span>
+            <span class="logo-sub">Turlock, CA &mdash; Full Service Auto</span>
+          </div>
+          <p>
+            Turlock&rsquo;s trusted full-service auto repair shop. We keep families and businesses
+            moving with honest work, fair prices, and genuine care.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="services.html#oil-changes">Oil Changes</a></li>
+            <li><a href="services.html#tires">Tires</a></li>
+            <li><a href="services.html#brakes">Brakes</a></li>
+            <li><a href="services.html#ac-heating">AC &amp; Heating</a></li>
+            <li><a href="services.html#engine-diagnostics">Engine Diagnostics</a></li>
+            <li><a href="services.html#rims">Bent &amp; Cracked Rims</a></li>
+            <li><a href="services.html#transmission">Transmission</a></li>
+            <li><a href="services.html#cooling">Cooling System</a></li>
+            <li><a href="services.html#suspension">Suspension</a></li>
+            <li><a href="services.html#alignment">Alignment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">Our Family</a></li>
+            <li><a href="/#reviews">Reviews</a></li>
+            <li><a href="/#why-us">Why The Tire Boys</a></li>
+            <li><a href="appointment.html">Book Appointment</a></li>
+            <li><a href="https://www.google.com/maps/place/Tire+Boys+%26+Automotive+Repair/@37.492607,-120.8430968,17z/data=!3m1!4b1!4m6!3m5!1s0x809107ffe1927ccf:0x10e172cc97e4a02e!8m2!3d37.492607!4d-120.8430968!16s%2Fg%2F11gxmv3pxw" target="_blank" rel="noopener noreferrer">Leave a Review &#9733;</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:2092502320">209-250-2320</a></li>
+            <li><a href="/#contact">400 S Golden State Blvd</a></li>
+            <li><a href="/#contact">Turlock, CA 95380</a></li>
+            <li><a href="/#contact">Mon&ndash;Sun: 7am &ndash; 7pm</a></li>
+            <li><a href="https://maps.google.com/?q=400+S+Golden+State+Blvd+Turlock+CA+95380"
+                   target="_blank" rel="noopener noreferrer">Get Directions</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 <span>The Tire Boys</span>. All Rights Reserved. &nbsp;|&nbsp; Turlock, CA</p>
+        <p>Serving Turlock, Modesto, Ceres, Denair, Hilmar, Hughson &amp; the Central Valley</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button id="scroll-top" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    'use strict';
+
+    /* ------ Mobile Menu ------ */
+    const hamburger   = document.getElementById('hamburger');
+    const mobileNav   = document.getElementById('mobile-nav');
+    const overlay     = document.getElementById('mobile-overlay');
+    const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-call-btn');
+
+    function openMenu() {
+      hamburger.classList.add('open');
+      mobileNav.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    overlay.addEventListener('click', closeMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+    /* ------ Scroll-to-Top Button ------ */
+    const scrollBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

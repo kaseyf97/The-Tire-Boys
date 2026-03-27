@@ -1,4 +1,27 @@
+// Rate limiting: max 5 submissions per IP per 15 minutes
+const rateLimitMap = new Map();
+const RATE_LIMIT = 5;
+const WINDOW_MS = 15 * 60 * 1000;
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip) || { count: 0, first: now };
+  if (now - entry.first > WINDOW_MS) {
+    rateLimitMap.set(ip, { count: 1, first: now });
+    return false;
+  }
+  if (entry.count >= RATE_LIMIT) return true;
+  rateLimitMap.set(ip, { count: entry.count + 1, first: entry.first });
+  return false;
+}
+
 export default async function handler(req, res) {
+  // Check rate limit
+  const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || 'unknown';
+  if (isRateLimited(ip)) {
+    return res.status(429).json({ error: 'Too many requests. Please wait 15 minutes before trying again.' });
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -15,6 +38,11 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Name, phone, and reason are required.' });
   }
 
+  // Validate email format if provided
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ error: 'Please enter a valid email address.' });
+  }
+
   // Validate field lengths
   if (name.length > 100 || phone.length > 20 || (message && message.length > 2000)) {
     return res.status(400).json({ error: 'One or more fields exceed maximum length.' });
@@ -29,14 +57,18 @@ export default async function handler(req, res) {
 
   try {
     // 1. Send full email to Gmail via Formspree
-    await fetch('https://formspree.io/f/maqpvgaq', {
+    const formspreeRes = await fetch(`https://formspree.io/f/${process.env.FORMSPREE_FORM_ID}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ name: safeName, phone: safePhone, email, reason: safeReason, message: safeMessage })
     });
+    if (!formspreeRes.ok) {
+      console.error('Formspree error:', formspreeRes.status);
+      return res.status(500).json({ error: 'Failed to send your message. Please try again.' });
+    }
 
-    // 2. Send push notification via ntfy
-    await fetch(`https://ntfy.sh/${process.env.NTFY_TOPIC}`, {
+    // 2. Send push notification via ntfy (non-critical — log but don't fail)
+    const ntfyRes = await fetch(`https://ntfy.sh/${process.env.NTFY_TOPIC}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'text/plain',
@@ -46,6 +78,9 @@ export default async function handler(req, res) {
       },
       body: `${safeName} | ${safePhone} | ${safeReason}\n${safeMessage || ''}`
     });
+    if (!ntfyRes.ok) {
+      console.error('ntfy notification error:', ntfyRes.status);
+    }
 
     return res.status(200).json({ success: true });
 
