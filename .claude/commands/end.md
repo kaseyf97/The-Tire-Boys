@@ -50,11 +50,40 @@ type: project
 **How to apply:** Read this at /start to resume quickly
 ```
 
-## Step 4: Confirm
+## Step 4: Commit Everything to GitHub
+
+Run these git commands to save all changes:
+
+```bash
+git add -A
+git status
+```
+
+Review what's staged, then commit with a message summarizing the session:
+
+```bash
+git commit -m "[one-line summary of what was done this session]
+
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+```
+
+Then push to GitHub:
+
+```bash
+git push
+```
+
+If the push fails because the remote branch doesn't exist yet, run:
+```bash
+git push -u origin HEAD
+```
+
+## Step 5: Confirm
 
 Output:
 ```
-Session saved. To resume next time, run /start.
+Session saved and pushed to GitHub. To resume next time, run /start.
 Tasks remaining: [count]
 Last completed: [what you just finished]
+Committed: [commit hash]
 ```
