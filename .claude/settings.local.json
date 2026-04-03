@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:www.pexels.com)",
+      "WebFetch(domain:unsplash.com)",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "Bash(curl -L -o \"temp-ac.jpg\" \"https://upload.wikimedia.org/wikipedia/commons/1/1b/Igor_Ovsyannykov_2017-05-25_%28Unsplash_EvYnqrmyPhg%29.jpg\")",
+      "Bash(curl -L -o \"temp-transmission.jpg\" \"https://upload.wikimedia.org/wikipedia/commons/e/e9/Igor_Ovsyannykov_2017-05-25_%28Unsplash%29.jpg\")",
+      "WebFetch(domain:pixabay.com)",
+      "Bash(ls ~/Downloads/pexels-*.jpg)",
+      "Bash(ls /tmp/*.jpg)",
+      "Bash(DEST=\"/c/Users/kasey/OneDrive/Documents/Claude Projects/The Tire Boys/.claude/worktrees/upbeat-elbakyan/images\")",
+      "Bash(SRC=\"/c/Users/kasey/Downloads\")",
+      "Bash(__NEW_LINE_0c28d709c1aaabcb__ cp:*)",
+      "Bash(cp \"$SRC/pexels-introspectivedsgn-34357283.jpg\" \"$DEST/service-tires.jpg\")",
+      "Bash(cp \"$SRC/pexels-lex-ger-2021617-3642618.jpg\" \"$DEST/service-brakes.jpg\")",
+      "Bash(curl -L -o \"/c/Users/kasey/OneDrive/Documents/Claude Projects/The Tire Boys/.claude/worktrees/upbeat-elbakyan/images/temp-align1.jpg\" \"https://upload.wikimedia.org/wikipedia/commons/8/84/Wheel_alignment_on_a_Ford_Focus_1.jpg\")",
+      "Bash(curl -L -o \"/c/Users/kasey/OneDrive/Documents/Claude Projects/The Tire Boys/.claude/worktrees/upbeat-elbakyan/images/temp-align2.jpg\" \"https://upload.wikimedia.org/wikipedia/commons/5/5a/LADA_Vesta_Sport%2C_Wheel_alignment.jpg\")",
+      "Bash(curl -L -o \"/c/Users/kasey/OneDrive/Documents/Claude Projects/The Tire Boys/.claude/worktrees/upbeat-elbakyan/images/temp-align3.jpg\" \"https://upload.wikimedia.org/wikipedia/commons/f/f6/Wheel_alignment_on_a_Ford_Focus_2.jpg\")",
+      "Bash(curl -L -o \"/c/Users/kasey/OneDrive/Documents/Claude Projects/The Tire Boys/.claude/worktrees/upbeat-elbakyan/images/temp-align4.jpg\" \"https://upload.wikimedia.org/wikipedia/commons/f/f2/Wheel_alignment_on_a_Ford_Focus_3.jpg\")",
+      "WebFetch(domain:openverse.org)",
+      "WebFetch(domain:api.openverse.org)",
+      "WebFetch(domain:www.flickr.com)",
+      "Bash(ls -t /c/Users/kasey/Downloads/*.jpg /c/Users/kasey/Downloads/*.jpeg /c/Users/kasey/Downloads/*.png)",
+      "Bash(ls -lh \"/c/Users/kasey/OneDrive/Documents/Claude Projects/The Tire Boys/.claude/worktrees/upbeat-elbakyan/images/service-\"*.jpg \"/c/Users/kasey/OneDrive/Documents/Claude Projects/The Tire Boys/.claude/worktrees/upbeat-elbakyan/images/service-\"*.jpeg)",
+      "Bash(magick --version)",
+      "Bash(convert --version)",
+      "Bash(python3 -c \"from PIL import Image; print\\(''PIL available''\\)\")",
+      "Bash(python -c \"from PIL import Image; print\\(''PIL available''\\)\")",
+      "Bash(python3:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(echo \"=== $f ===\")",
+      "Read(//c/Users/kasey/OneDrive/Documents/Claude Projects/The Tire Boys/.claude/worktrees/upbeat-elbakyan/**)",
+      "Bash(done)",
+      "Bash(sed -i 's/      text-align: justify;//g' \"$f\")",
+      "Bash(sed -i 's/      text-align-last: justify;//g' \"$f\")",
+      "Bash(echo \"Cleaned $f\")"
+    ]
+  }
+}
