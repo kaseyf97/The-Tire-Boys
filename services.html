@@ -1558,6 +1558,11 @@
           qnavPills.forEach(pill => {
             pill.classList.toggle('active', pill.getAttribute('href') === '#' + id);
           });
+          // Keep active pill visible in the scrollable nav bar
+          const activePill = document.querySelector('.qnav-pill.active');
+          if (activePill) {
+            activePill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+          }
         }
       });
     }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
