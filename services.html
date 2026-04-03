@@ -531,9 +531,15 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding-bottom: 2px;
+      padding: 0 0 2px 20px; /* right padding removed — handled by ::after spacer */
     }
     .services-quicknav .container::-webkit-scrollbar { display: none; }
+    /* Trailing spacer so last pill scrolls fully into view */
+    .services-quicknav .container::after {
+      content: '';
+      flex-shrink: 0;
+      width: 20px;
+    }
     .qnav-pill {
       display: inline-flex;
       align-items: center;
