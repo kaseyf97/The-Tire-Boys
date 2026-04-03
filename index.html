@@ -2347,70 +2347,70 @@
     const services = [
       {
         name: 'Oil Changes',
-        icon: '<i class="fa-solid fa-oil-can"></i>',
+        image: 'images/service-oil.jpg',
         teaser: 'Starting at $50',
         price: 'Starting at $50',
         description: 'Conventional, synthetic & high-mileage oil changes with multi-point inspection included. We use top-quality filters and oil to keep your engine running smooth.'
       },
       {
         name: 'Tires',
-        icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="currentColor"/><line x1="12" y1="6.5" x2="12" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="14" x2="12" y2="17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6.5" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14" y1="12" x2="17.5" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+        image: 'images/service-tires.jpg',
         teaser: 'Starting at $50/tire',
         price: 'Starting at $50/tire',
         description: 'Tire sales, mounting, balancing, rotation & flat repairs. All major brands available at competitive prices.'
       },
       {
         name: 'Brake Service',
-        icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><circle cx="13" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="13" cy="12" r="2.5" fill="currentColor"/><rect x="1.5" y="7.5" width="4.5" height="9" rx="1.2" fill="currentColor"/><rect x="0.5" y="6.5" width="2" height="11" rx="0.8" fill="currentColor"/></svg>',
+        image: 'images/service-brakes.jpg',
         teaser: 'Starting at $180/axle',
         price: 'Starting at $180/axle',
         description: 'Brake pad replacement, rotor resurfacing & complete brake system inspections. Your safety is our top priority.'
       },
       {
         name: 'AC & Heating',
-        icon: '<i class="fa-solid fa-snowflake"></i>',
+        image: 'images/service-ac.jpg',
         teaser: '$130 + $20/lb',
         price: '$130 + $20/lb of refrigerant',
         description: 'AC recharge, leak detection, heater core repairs & climate control diagnostics to keep you comfortable year-round.'
       },
       {
         name: 'Engine Diagnostics',
-        icon: '<i class="fa-solid fa-plug"></i>',
+        image: 'images/service-diagnostics.jpg',
         teaser: 'Free',
         price: 'Free',
         description: 'Computer-based diagnostics for check engine lights, misfires & performance issues. We pinpoint the problem fast.'
       },
       {
         name: 'Bent & Cracked Rims',
-        icon: '<i class="fa-solid fa-circle-dot"></i>',
+        image: 'images/service-rims.jpg',
         teaser: 'Starting at $100',
         price: 'Starting at $100',
         description: 'Don\'t replace your rims — repair them. We straighten bent rims and repair cracks to restore proper balance, prevent air leaks, and save you money over buying new wheels.'
       },
       {
         name: 'Transmission',
-        icon: '<i class="fa-solid fa-gears"></i>',
+        image: 'images/service-transmission.jpg',
         teaser: 'Call for Quote',
         price: 'Call for Quote',
         description: 'Fluid flushes, filter changes & transmission repair for both automatic & manual vehicles.'
       },
       {
         name: 'Cooling System',
-        icon: '<i class="fa-solid fa-temperature-half"></i>',
+        image: 'images/service-cooling.jpg',
         teaser: 'Starting at $100',
         price: 'Starting at $100',
         description: 'Radiator flush, thermostat replacement & coolant system pressure testing to prevent overheating.'
       },
       {
         name: 'Suspension',
-        icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em" aria-hidden="true"><rect x="8" y="1" width="8" height="2.5" rx="1" fill="currentColor"/><rect x="10.5" y="3.5" width="3" height="6" rx="0.8" fill="currentColor"/><path d="M7 9.5 Q9 9.5 9 11 Q9 12.5 12 12.5 Q15 12.5 15 11 Q15 9.5 17 9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M7 12.5 Q9 12.5 9 14 Q9 15.5 12 15.5 Q15 15.5 15 14 Q15 12.5 17 12.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="8.5" y="15.5" width="7" height="6" rx="1.5" fill="currentColor"/><rect x="8" y="20.5" width="8" height="2.5" rx="1" fill="currentColor"/></svg>',
+        image: 'images/service-suspension.jpg',
         teaser: 'Call for Quote',
         price: 'Call for Quote',
         description: 'Struts, shocks, ball joints, tie rods & alignment services for a smooth, safe ride.'
       },
       {
         name: 'Alignment',
-        icon: '<i class="fa-solid fa-road"></i>',
+        image: 'images/service-alignment.jpg',
         teaser: 'Starting at $75',
         price: 'Starting at $75',
         description: 'Two-wheel & four-wheel alignment to correct steering pull, uneven tire wear & handling issues.'
@@ -2428,7 +2428,7 @@
 
       // Fill modal content
       document.getElementById('modalNumber').textContent = String(index + 1).padStart(2, '0');
-      document.getElementById('modalImg').innerHTML = s.icon;
+      document.getElementById('modalImg').innerHTML = `<img src="${s.image}" alt="${s.name}">`;
       document.getElementById('modalTitle').textContent = s.name;
       document.getElementById('modalDesc').textContent = s.description;
       document.getElementById('modalPrice').textContent = s.price;
